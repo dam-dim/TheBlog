@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import styles from "./Login.module.css";
 
 export default function Login() {
@@ -7,14 +9,14 @@ export default function Login() {
 
     return (
         <div className={styles.login}>
+            <h1>Log in</h1>
             <form action="" method="POST" onSubmit={loginHandler}>
-                <h1>Log in</h1>
-                <div className={styles.username}>
+                <div className={styles.input}>
                     <label htmlFor="username">Username</label>
                     <input type="text" name="username" id="username" />
                 </div>
 
-                <div className={styles.password}>
+                <div className={styles.input}>
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" id="password" />
                 </div>
@@ -25,7 +27,7 @@ export default function Login() {
             </form>
             <p>
                 If You do not have an account, You can register{" "}
-                <a href="/register">here.</a>
+                <Link to="/register">here.</Link>
             </p>
         </div>
     );
