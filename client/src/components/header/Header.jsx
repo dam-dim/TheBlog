@@ -2,10 +2,13 @@ import styles from "./Header.module.css";
 
 export default function Header() {
     return (
-        <header className={styles.header}>
-            <a href="#">
-                <h1 className={styles.title}>The Blog</h1>
-            </a>
+        <div className={styles.header}>
+            <div className={styles.title}>
+                <a href="#">
+                    <h1>The Blog</h1>
+                </a>
+            </div>
+
             <div className={styles.navigation}>
                 <ul>
                     <li>
@@ -25,6 +28,6 @@ export default function Header() {
                     </li>
                 </ul>
             </div>
-        </header>
+        </div>
     );
 }

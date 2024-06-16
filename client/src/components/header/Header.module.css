@@ -1,11 +1,10 @@
 .header {
     width: 100%;
-    height: 5em;
+    height: 100px;
     background-color: cadetblue;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    font-size: x-large;
 }
 
 .header a {
@@ -13,9 +12,12 @@
     color: black;
 }
 
+.title {
+margin-left: 100px;
+}
+
 .navigation {
-    right: 0;
-    position: absolute;
+    margin-right: 100px;
 }
 
 .navigation ul li{
@@ -23,8 +25,6 @@
 }
 
 .navigation ul li a {
-    text-decoration: none;
-    color: black;
     padding: 15px;
 }
 
