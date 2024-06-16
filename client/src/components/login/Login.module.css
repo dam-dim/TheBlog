@@ -1,6 +1,44 @@
 .login {
-    background-color: bisque;
+    background-color: #124E66;
+    color: #D3D9D4;
     text-align: center;
-    width: 50%;
     margin: auto;
+    width: 30em;
+    padding: 30px;
+}
+
+.username, .password {
+    background-color: #2E3944;
+    width: 15em;
+    margin: 20px auto;
+}
+
+.login input {
+    margin: 15px;
+    padding: 5px;
+    font-size: x-large;
+}
+
+.submit input{
+    cursor: pointer;
+    padding: 10px;
+    background-color: #212A31;
+    color: #D3D9D4;
+}
+
+.submit input:hover {
+    transition: ease 0.15s;
+    background-color: #D3D9D4;
+    color: #212A31;
+}
+
+.login a {
+    padding: 5px;
+    color: #D3D9D4;
+}
+
+.login a:hover {
+    transition: ease 0.15s;
+    color: #212A31;
+    background-color: #D3D9D4;
 }
