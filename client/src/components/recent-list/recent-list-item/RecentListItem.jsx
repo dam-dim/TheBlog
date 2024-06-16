@@ -19,7 +19,7 @@ export default function RecentListItem() {
                 </p> */}
                 <div className={styles.creator}>
                     <p>@username</p>
-                    <p>16/6/24 14:20</p>
+                    <p>16.06.24 14:20</p>
                 </div>
                 <Link to="/details">Read more</Link>
             </div>

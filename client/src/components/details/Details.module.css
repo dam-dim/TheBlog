@@ -1,10 +1,46 @@
 .details {
-    padding: 50px;
     width: 50em;
     margin: auto;
-    background-color: aliceblue;
+    background-color: #124E66;
+    color: #D3D9D4;
+    font-size: x-large;
 } 
+
+.content {
+    padding: 20px 80px 80px 80px;
+}
 
 .details img {
     width: 100%;
 }
+
+.content p {
+    margin: 30px;
+}
+
+.creator {
+    display: flex;
+    justify-content: space-between;
+    width: 380px;
+    height: 80px;
+    font-size: large;
+    margin-bottom: 50px;
+}
+
+.creator p {
+    margin: 0;
+}
+
+.creator img {
+    height: auto;
+    width: auto;
+}
+
+.creatorDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+
