@@ -1,12 +1,10 @@
+import Recent from "../recent-list/Recent";
 import styles from "./Home.module.css";
 
-export default function () {
+export default function Home() {
     return (
         <div className={styles.home}>
-            <h1>Home</h1>
-            <div className={styles.recent}>
-                <div className={styles.post}></div>
-            </div>
+            <Recent />
         </div>
     );
 }

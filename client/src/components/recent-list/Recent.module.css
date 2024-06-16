@@ -1,0 +1,12 @@
+.recent {
+    margin: auto;
+}
+
+.title {
+    margin-bottom: 80px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-evenly;
+}
