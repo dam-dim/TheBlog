@@ -1,0 +1,10 @@
+.details {
+    padding: 50px;
+    width: 50em;
+    margin: auto;
+    background-color: aliceblue;
+} 
+
+.details img {
+    width: 100%;
+}

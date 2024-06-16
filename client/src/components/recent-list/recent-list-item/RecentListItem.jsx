@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./RecentListItem.module.css";
 
 export default function RecentListItem() {
@@ -18,7 +19,7 @@ export default function RecentListItem() {
                 </p>
                 <p>16/6/2024 14:20</p>
                 <p>@username</p>
-                <a href="/details">Read more</a>
+                <Link to="/details">Read more</Link>
             </div>
         </div>
     );

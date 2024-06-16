@@ -1,34 +1,37 @@
 .card {
     text-align: left;
     width: 450px;
-    background-color: aliceblue;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #124E66;
+    color: #D3D9D4;
+    box-shadow: 0 4px 8px 0 #212A31, 0 6px 20px 0 #2E3944;
 
 }
 
 .card:hover {
     transition: ease-in 0.1s;
-    box-shadow: 5px 8px 15px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 5px 8px 15px 5px #212A31, 0 6px 20px 0 #2E3944;
 }
 
 .card img {
     width: 100%;
 }
 
-
-
 .cardDetails {
     padding: 25px 35px;
 }
 
 .cardDetails a {
-    background-color: white;
+    background-color: #212A31;
     border: 1px solid black;
     text-decoration: none;
-    color: black;
+    display: block;
+    text-align: center;
+    padding: 10px 5px;
+    margin: 10px 0;
+    color: #D3D9D4;
 }
 
 .cardDetails a:hover {
-    background-color: blue;
-    color: white;
-}
+    background-color: #D3D9D4;
+    color: #212A31;
+} 

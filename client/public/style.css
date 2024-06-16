@@ -13,4 +13,5 @@ html, body {
     flex-direction: column;
     min-height: 100vh;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #212A31;
 }
