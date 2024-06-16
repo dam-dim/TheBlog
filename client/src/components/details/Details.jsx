@@ -1,3 +1,5 @@
+import Comments from "../comments/Comments";
+import Devider from "../devider/Devider";
 import styles from "./Details.module.css";
 
 export default function Details() {
@@ -65,6 +67,8 @@ export default function Details() {
                     nemo, aut consequatur!
                 </p>
             </div>
+            <Devider />
+            <Comments />
         </div>
     );
 }
