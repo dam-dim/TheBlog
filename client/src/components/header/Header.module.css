@@ -4,12 +4,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #212A31;
+    background-color: #D3D9D4;
 }
 
 .header a {
     text-decoration: none;
-    color: #D3D9D4;
+    color: #212A31;
 }
 
 .title {
@@ -30,6 +30,6 @@ margin-left: 100px;
 
 .navigation ul li a:hover {
     transition: ease-in-out 0.15s;
-    background-color: #748D92;
-    color: #212A31;
+    background-color: #212A31;
+    color: #D3D9D4;
 }

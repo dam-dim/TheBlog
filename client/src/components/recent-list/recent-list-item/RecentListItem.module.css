@@ -8,7 +8,7 @@
 }
 
 .card:hover {
-    transition: ease-in 0.1s;
+    transition: ease-in 0.15s;
     box-shadow: 5px 8px 15px 5px #212A31, 0 6px 20px 0 #2E3944;
 }
 
@@ -32,6 +32,8 @@
 }
 
 .cardDetails a:hover {
+    
+    transition: ease-in-out 0.15s;
     background-color: #D3D9D4;
     color: #212A31;
 } 
