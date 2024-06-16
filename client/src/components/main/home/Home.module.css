@@ -1,8 +1,7 @@
 .home {
     width: 1600px;
-    height: 1000px;
+    height: 200px;
     text-align: center;
     margin: auto;
-    background-color: cornflowerblue;
-   
+    background-color: white;
 }

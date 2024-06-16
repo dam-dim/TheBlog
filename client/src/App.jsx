@@ -1,12 +1,15 @@
+import Devider from "./components/devider/Devider";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import Home from "./components/home/Home";
+import Main from "./components/main/Main";
 
 function App() {
     return (
         <>
             <Header />
-            <Home />
+            <Devider />
+            <Main />
+            <Devider />
             <Footer />
         </>
     );

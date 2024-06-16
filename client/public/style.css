@@ -3,8 +3,13 @@
     padding: 0;
 }
 
+html, body {
+    height: 100%;
+}
+
 #root {
-    position: relative;
-    min-height: 100vh;
     font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
