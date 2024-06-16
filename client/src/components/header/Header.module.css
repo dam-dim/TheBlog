@@ -1,0 +1,34 @@
+.header {
+    width: 100%;
+    height: 5em;
+    background-color: cadetblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+}
+
+.header a {
+    text-decoration: none;
+    color: black;
+}
+
+.navigation {
+    right: 0;
+    position: absolute;
+}
+
+.navigation ul li{
+    display: inline;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 15px;
+}
+
+.navigation ul li a:hover {
+    transition: ease-in-out 0.2s;
+    background-color: blueviolet;
+}

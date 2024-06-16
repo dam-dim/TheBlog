@@ -1,12 +1,13 @@
-import Navigation from "./components/Navigation"
+import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
 
 function App() {
-
-  return (
-    <>
-      <Navigation/>
-    </>
-  )
+    return (
+        <>
+            <Header />
+            <Footer />
+        </>
+    );
 }
 
-export default App
+export default App;
