@@ -1,10 +1,12 @@
 .details {
     width: 50em;
-    margin: auto;
+    margin: 100px auto 0 auto;
     background-color: #124E66;
     color: #D3D9D4;
     font-size: x-large;
 } 
+
+
 
 .content {
     padding: 20px 80px 80px 80px;

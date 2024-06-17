@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import styles from "./Dashboard.module.css";
 
 export default function Dashboard() {
@@ -5,7 +7,16 @@ export default function Dashboard() {
         <div className={styles.dashboard}>
             <h1>Dashboard</h1>
             <div className={styles.myPosts}>
-                <h2>My Posts</h2>
+                <div className={styles.header}>
+                    <h2>My Posts</h2>
+                    <div className={styles.createNew}>
+                        <Link to="/create">
+                            <img src="images/add.png" alt="add" />
+                            <p>{`\tCreate new post`}</p>
+                        </Link>
+                    </div>
+                </div>
+
                 <table>
                     <thead>
                         <tr>
@@ -23,27 +34,19 @@ export default function Dashboard() {
                             <td>17.06.24 11:58</td>
                             <td>17.06.24 11:58</td>
                             <td>
-                                <a href="#">Details</a>
+                                <Link className={styles.details} to="/details">
+                                    Details
+                                </Link>
                             </td>
                             <td>
-                                <a href="#">Edit</a>
+                                <Link className={styles.edit} to="/edit">
+                                    Edit
+                                </Link>
                             </td>
                             <td>
-                                <a href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Post Title</td>
-                            <td>17.06.24 11:58</td>
-                            <td>17.06.24 11:58</td>
-                            <td>
-                                <a href="#">Details</a>
-                            </td>
-                            <td>
-                                <a href="#">Edit</a>
-                            </td>
-                            <td>
-                                <a href="#">Delete</a>
+                                <Link className={styles.delete} to="/delete">
+                                    Delete
+                                </Link>
                             </td>
                         </tr>
                         <tr>
@@ -51,13 +54,19 @@ export default function Dashboard() {
                             <td>17.06.24 11:58</td>
                             <td>17.06.24 11:58</td>
                             <td>
-                                <a href="#">Details</a>
+                                <Link className={styles.details} to="/details">
+                                    Details
+                                </Link>
                             </td>
                             <td>
-                                <a href="#">Edit</a>
+                                <Link className={styles.edit} to="/edit">
+                                    Edit
+                                </Link>
                             </td>
                             <td>
-                                <a href="#">Delete</a>
+                                <Link className={styles.delete} to="/delete">
+                                    Delete
+                                </Link>
                             </td>
                         </tr>
                         <tr>
@@ -65,13 +74,39 @@ export default function Dashboard() {
                             <td>17.06.24 11:58</td>
                             <td>17.06.24 11:58</td>
                             <td>
-                                <a href="#">Details</a>
+                                <Link className={styles.details} to="/details">
+                                    Details
+                                </Link>
                             </td>
                             <td>
-                                <a href="#">Edit</a>
+                                <Link className={styles.edit} to="/edit">
+                                    Edit
+                                </Link>
                             </td>
                             <td>
-                                <a href="#">Delete</a>
+                                <Link className={styles.delete} to="/delete">
+                                    Delete
+                                </Link>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Post Title</td>
+                            <td>17.06.24 11:58</td>
+                            <td>17.06.24 11:58</td>
+                            <td>
+                                <Link className={styles.details} to="/details">
+                                    Details
+                                </Link>
+                            </td>
+                            <td>
+                                <Link className={styles.edit} to="/edit">
+                                    Edit
+                                </Link>
+                            </td>
+                            <td>
+                                <Link className={styles.delete} to="/delete">
+                                    Delete
+                                </Link>
                             </td>
                         </tr>
                     </tbody>
