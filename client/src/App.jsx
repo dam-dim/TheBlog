@@ -8,7 +8,6 @@ function App() {
     return (
         <BrowserRouter>
             <Header />
-            <Devider />
             <Main />
             <Footer />
         </BrowserRouter>
