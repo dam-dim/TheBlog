@@ -17,7 +17,7 @@ export default function Register() {
                 </div>
 
                 <div className={styles.input}>
-                    <label htmlFor="username">Email</label>
+                    <label htmlFor="email">Email</label>
                     <input type="text" name="email" id="email" />
                 </div>
 

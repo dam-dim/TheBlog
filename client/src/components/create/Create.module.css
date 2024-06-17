@@ -1,0 +1,65 @@
+.create {
+    background-color: #124E66;
+    color: #D3D9D4;
+    text-align: center;
+    margin: 100px auto 0 auto;
+    padding: 30px;
+    width: 40em;
+}
+
+.input {
+    background-color: #2E3944;
+    margin: 20px auto;
+}
+
+.content {
+    background-color: #2E3944;
+    margin: 20px auto;
+}
+
+.create input {
+    margin: 15px;
+    padding: 5px;
+    font-size: x-large;
+}
+
+.create textarea {
+    font-size: x-large;
+    height: 500px;
+    width: 500px;
+    margin: 15px;
+}
+
+.submit input{
+    cursor: pointer;
+    padding: 15px;
+    background-color: #212A31;
+    color: #D3D9D4;
+}
+
+.submit input:hover {
+    transition: ease 0.15s;
+    background-color: #D3D9D4;
+    color: #212A31;
+}
+
+.create a {
+    padding: 5px;
+    color: #D3D9D4;
+}
+
+.create a:hover {
+    transition: ease 0.15s;
+    color: #212A31;
+    background-color: #D3D9D4;
+}
+
+.fieldsWrapper {
+    width: 30em;
+    margin: auto;
+}
+
+.inputWrapper {
+    display: flex;
+    justify-content: space-around;
+}
