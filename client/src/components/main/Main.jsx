@@ -9,6 +9,7 @@ import Error from "../error/Error";
 import Register from "../register/Register";
 import Dashboard from "../dashboard/Dashboard";
 import Create from "../create/Create";
+import Edit from "../edit/Edit";
 
 export default function Main() {
     return (
@@ -27,6 +28,7 @@ export default function Main() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/details" element={<Details />} />
                 <Route path="/create" element={<Create />} />
+                <Route path="/edit" element={<Edit />} />
                 <Route path="*" element={<Error />} />
             </Routes>
         </div>

@@ -1,0 +1,66 @@
+.edit {
+    background-color: #124E66;
+    color: #D3D9D4;
+    text-align: center;
+    margin: 100px auto 0 auto;
+    padding: 20px;
+    width: 40em;
+}
+
+.input {
+    background-color: #2E3944;
+    margin: 20px auto;
+}
+
+.image input {
+    width: 100%;
+}
+
+.image {
+    background-color: #2E3944;
+    margin: 20px auto;
+}
+
+.content {
+    background-color: #2E3944;
+    margin: 20px auto;
+    padding: 10px 30px;
+}
+
+.edit input {
+    margin: 15px;
+    padding: 10px;
+    width: 80%;
+}
+
+.edit textarea {
+    height: 500px;
+    padding: 10px;
+    width: 91%;
+    margin-top: 15px;
+}
+
+.submit input{
+    cursor: pointer;
+    padding: 15px;
+    background-color: #212A31;
+    color: #D3D9D4;
+    font-size: large;
+    width: 20%;
+}
+
+.submit input:hover {
+    transition: ease 0.15s;
+    background-color: #D3D9D4;
+    color: #212A31;
+}
+
+.fieldsWrapper {
+    width: 30em;
+    margin: auto;
+}
+
+.inputWrapper {
+    display: flex;
+    justify-content: space-around;
+}
