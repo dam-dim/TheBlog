@@ -11,8 +11,8 @@ export default function Dashboard() {
                     <h2>My Posts</h2>
                     <div className={styles.createNew}>
                         <Link to="/create">
+                            <p>{`Create new post`}</p>
                             <img src="images/add.png" alt="add" />
-                            <p>{`\tCreate new post`}</p>
                         </Link>
                     </div>
                 </div>

@@ -9,14 +9,15 @@
 
 .input {
     background-color: #2E3944;
-    width: 15em;
+    width: 20em;
     margin: 20px auto;
+    padding: 5px;
 }
 
 .login input {
     margin: 15px;
-    padding: 5px;
-    font-size: x-large;
+    padding: 10px;
+    width: 20em;
 }
 
 .submit input{
@@ -24,6 +25,7 @@
     padding: 10px;
     background-color: #212A31;
     color: #D3D9D4;
+    font-size: large;
 }
 
 .submit input:hover {

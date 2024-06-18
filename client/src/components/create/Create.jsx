@@ -18,8 +18,14 @@ export default function Create() {
                         </div>
                     </div>
 
+                    <div className={styles.image}>
+                        <label htmlFor="imageUrl">Image URL</label>
+                        <input type="text" name="imageUrl" id="imageUrl" />
+                    </div>
+
                     <div className={styles.content}>
                         <label htmlFor="content">Content</label>
+
                         <textarea name="content" id="content"></textarea>
                     </div>
                 </div>
