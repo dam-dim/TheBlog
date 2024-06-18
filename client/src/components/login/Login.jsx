@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 
 import styles from "./Login.module.css";
+import { useState } from "react";
 
 export default function Login() {
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
+
     const loginHandler = (e) => {
         e.preventDefault();
     };
@@ -19,6 +23,10 @@ export default function Login() {
                 <div className={styles.input}>
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" id="password" />
+                </div>
+
+                <div className={styles.error}>
+                    <p>Wrong username or password!</p>
                 </div>
 
                 <div className={styles.submit}>
