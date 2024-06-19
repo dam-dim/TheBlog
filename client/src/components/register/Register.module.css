@@ -1,4 +1,4 @@
-.register {
+.form {
     background-color: #124E66;
     color: #D3D9D4;
     text-align: center;
@@ -14,13 +14,21 @@
     padding: 5px;
 }
 
-.register input {
+.input input {
     margin: 15px;
     padding: 10px;
     width: 20em;
 }
 
-.submit input{
+.input p {
+    color: red;
+}
+
+.submit p {
+    margin: 30px 0;
+}
+
+.submit input {
     cursor: pointer;
     padding: 15px;
     background-color: #212A31;
@@ -34,12 +42,16 @@
     color: #212A31;
 }
 
-.register a {
+.link {
+    margin: 30px 0 10px 0;
+}
+
+.form a {
     padding: 5px;
     color: #D3D9D4;
 }
 
-.register a:hover {
+.form a:hover {
     transition: ease 0.15s;
     color: #212A31;
     background-color: #D3D9D4;

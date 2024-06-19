@@ -1,16 +1,19 @@
 import { useState } from "react";
-import styles from "./Login.module.css";
-import Input from "../form/input/Input";
-import Submit from "../form/submit/Submit";
+import styles from "./Form.module.css";
+import Input from "./input/Input";
+import Submit from "./submit/Submit";
 import { validator, isValid } from "../../utils/validator";
 import { Link } from "react-router-dom";
 
 const initialValues = {
     username: "",
     password: "",
+    repPass: "",
+    email: "",
+    submit: "",
 };
 
-export default function Login() {
+export default function Form() {
     const [formValues, setFormValues] = useState(initialValues);
     const [fieldErrors, setFieldErrors] = useState(initialValues);
 
@@ -21,6 +24,7 @@ export default function Login() {
             // TODO: Make a POST request
             const data = {
                 username: formValues.username,
+                email: formValues.email,
                 password: formValues.password,
             };
 
@@ -49,7 +53,7 @@ export default function Login() {
 
     return (
         <div className={styles.form}>
-            <h1>Login</h1>
+            <h1>Form</h1>
             <form action="">
                 <Input
                     class={styles.input}
@@ -71,18 +75,37 @@ export default function Login() {
                     onBlur={onBlur}
                     error={fieldErrors.password}
                 />
-
+                <Input
+                    class={styles.input}
+                    type="password"
+                    id="repPass"
+                    title="Repeat Password"
+                    value={formValues.repPass}
+                    onChange={onChangeFieldHandler}
+                    onBlur={onBlur}
+                    error={fieldErrors.repPass}
+                />
+                <Input
+                    class={styles.input}
+                    type="text"
+                    id="email"
+                    title="Email"
+                    value={formValues.email}
+                    onChange={onChangeFieldHandler}
+                    onBlur={onBlur}
+                    error={fieldErrors.email}
+                />
                 <Submit
                     class={styles.submit}
-                    buttonText="Login"
+                    buttonText="Submit"
                     error={fieldErrors.submit}
                     onClick={onClickSubmitHandler}
                 />
             </form>
             <div className={styles.link}>
                 <p>
-                    If You don't have have an account, You can register{" "}
-                    <Link to="/register">here.</Link>
+                    If You already have have an account, You can login{" "}
+                    <Link to="/login">here.</Link>
                 </p>
             </div>
         </div>
