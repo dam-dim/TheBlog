@@ -1,10 +1,48 @@
 .allPosts {
     margin: 100px auto 0 auto;
     width: 1000px;
-    background-color: #124E66;
+    padding-bottom: 0 20px 50px 20px;
 }
 
 .allPosts h1 {
     margin-bottom: 40px;
 }
 
+.allWrapper {
+    margin-top: 20px
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.filters input {
+    padding: 5px;
+}
+
+.filters select {
+    padding: 5px;
+}
+
+.filters label {
+    margin: 0 10px 0 0;
+}
+
+.search input {
+    width: 250px;
+}
+
+.sort {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sort p {
+    margin-right: 20px;
+}
+
+.dateSort {
+    padding-left: 20px;
+}

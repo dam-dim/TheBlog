@@ -11,7 +11,6 @@ export default function Home() {
                     alt=""
                 />
             </div>
-            <div className={styles.welcome}></div>
             <Recent />
             <AllPosts />
         </div>

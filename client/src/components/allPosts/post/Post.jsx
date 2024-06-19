@@ -5,14 +5,21 @@ import styles from "./Post.module.css";
 export default function Post() {
     return (
         <div className={styles.post}>
-            <div className={styles.over}>
-                <h3>Post Title</h3>
-                <h4>Post Category</h4>
+            <Link to="/details">
+                <div className={styles.firstCol}>
+                    <h3>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Qui adipisci minima iusto ratione voluptas, dicta fugiat
+                    </h3>
+                    <br />
 
-                <p>Post Creator</p>
-                <p>19.06.24 20:02</p>
-                <Link to="/details">Details</Link>
-            </div>
+                    <h4>Post Category</h4>
+                </div>
+                <div>
+                    <p>@username</p>
+                    <p>19.06.24 20:02</p>
+                </div>
+            </Link>
         </div>
     );
 }
