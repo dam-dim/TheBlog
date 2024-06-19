@@ -1,3 +1,4 @@
+import AllPosts from "../allPosts/AllPosts";
 import Recent from "../recent-list/Recent";
 import styles from "./Home.module.css";
 
@@ -12,6 +13,7 @@ export default function Home() {
             </div>
             <div className={styles.welcome}></div>
             <Recent />
+            <AllPosts />
         </div>
     );
 }

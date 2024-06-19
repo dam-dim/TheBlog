@@ -11,12 +11,7 @@ export default function RecentListItem() {
             <div className={styles.cardDetails}>
                 <h3>Post Title</h3>
                 <p>Post Category</p>
-                {/* <p className={styles.details}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-                    ipsam ipsum suscipit sapiente nulla nobis tempora,
-                    voluptatem iusto possimus qui minima iure aut numquam
-                    recusandae, quisquam maxime vero. Unde, minima.
-                </p> */}
+
                 <div className={styles.creator}>
                     <p>@username</p>
                     <p>16.06.24 14:20</p>

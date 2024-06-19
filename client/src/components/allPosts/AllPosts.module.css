@@ -1,0 +1,10 @@
+.allPosts {
+    margin: 100px auto 0 auto;
+    width: 1000px;
+    background-color: #124E66;
+}
+
+.allPosts h1 {
+    margin-bottom: 40px;
+}
+
