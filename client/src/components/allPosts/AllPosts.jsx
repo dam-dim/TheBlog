@@ -49,6 +49,20 @@ export default function AllPosts() {
                 <Post />
                 <Post />
             </div>
+
+            <div className={styles.pagination}>
+                <a href="">{"|<"}</a>
+                <a href="">{"<"}</a>
+                {"\t\t\t"}
+                <a href="">1</a>
+                <a href="">
+                    <b>2</b>
+                </a>
+                <a href="">3</a>
+                {"\t\t\t"}
+                <a href="">{">"}</a>
+                <a href="">{">|"}</a>
+            </div>
         </div>
     );
 }

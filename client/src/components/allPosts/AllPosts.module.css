@@ -46,3 +46,17 @@
 .dateSort {
     padding-left: 20px;
 }
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination a{
+    text-decoration: none;
+    color: #212A31;
+    margin: 0 5px;
+}
+
+.pagination a:hover {
+    transition: ease 0.15s;
+    text-decoration: underline;
+}

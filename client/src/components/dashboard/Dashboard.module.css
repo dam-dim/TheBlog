@@ -1,9 +1,12 @@
 .dashboard {
     margin: 100px auto 0 auto;
-    padding: 80px;
     width: 50em;
-    background-color: #124E66;
     color: #D3D9D4;
+}
+
+.dashboard h1 {
+    color: #212A31;
+    text-align: center;
 }
 
 .header {
@@ -25,12 +28,13 @@
 
 .myPosts {
     margin: 50px 0 0 0;
-    background-color: #2E3944;
+    
+    background-color: #124E66;
     padding: 20px;
 }
 
 .myPosts thead {
-    background-color: #212A31;
+    background-color: #2E3944;
 }
 
 .myPosts table {

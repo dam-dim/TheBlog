@@ -1,7 +1,7 @@
 .post{
     margin: 0 auto;
     background-color: #2E3944;
-    border: 1px solid black;
+    border: 1px solid #212A31;
     font-size: medium;
     padding: 10px;
     overflow: hidden;
@@ -16,7 +16,7 @@
 }
 
 .post:hover {
-    outline: 3px solid black;
+    outline: 3px solid #212A31;
 }
 
 .firstCol {
