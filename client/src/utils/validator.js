@@ -3,6 +3,10 @@ const errors = {
     email: "",
     password: "",
     repPass: "",
+    title: "",
+    category: "",
+    imageUrl: "",
+    content: "",
     submit: "",
 };
 
@@ -54,6 +58,49 @@ const validateEmail = (...props) => {
     return (errors.email = "");
 };
 
+const validateTitle = (...props) => {
+    const title = props[0].trim();
+
+    if (title === "") return (errors.title = "Title is required!");
+
+    if (title.length < 5)
+        return (errors.title = "Title length must be at least 5 characters!");
+
+    return (errors.title = "");
+};
+
+const validateCategory = (...props) => {
+    const category = props[0].trim();
+
+    if (category === "") return (errors.category = "Category is required!");
+
+    if (category.length < 5)
+        return (errors.category =
+            "Category length must be at least 5 characters!");
+
+    return (errors.category = "");
+};
+
+const validateImageUrl = (...props) => {
+    const imageUrl = props[0].trim();
+
+    if (imageUrl === "") return (errors.imageUrl = "Image URL is required!");
+
+    return (errors.imageUrl = "");
+};
+
+const validateContent = (...props) => {
+    const content = props[0].trim();
+
+    if (content === "")
+        return (errors.catcontentegory = "Content is required!");
+
+    if (content.length < 5)
+        return (errors.content =
+            "Content length must be at least 5 characters!");
+    return (errors.content = "");
+};
+
 const validateSubmit = (...props) => {
     for (const key in errors) {
         if (key === "submit") continue;
@@ -69,6 +116,10 @@ export const validator = {
     password: validatePassword,
     repPass: validateRepPass,
     email: validateEmail,
+    title: validateTitle,
+    category: validateCategory,
+    imageUrl: validateImageUrl,
+    content: validateContent,
     submit: validateSubmit,
 };
 
@@ -78,12 +129,16 @@ export const isValid = {
     password: () => errors.password === "",
     repPass: () => errors.repPass === "",
     email: () => errors.email === "",
+    title: () => errors.title === "",
+    category: () => errors.category === "",
+    imageUrl: () => errors.imageUrl === "",
+    content: () => errors.content === "",
 };
 
-export const validateOne = (field, ...props) => {
-    validator[field](props);
-};
+// export const validateOne = (field, ...props) => {
+//     validator[field](props);
+// };
 
-export const validateAll = () => {
-    //
-};
+// export const validateAll = () => {
+//     //
+// };

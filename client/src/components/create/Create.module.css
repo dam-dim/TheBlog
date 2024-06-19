@@ -1,52 +1,39 @@
-.create {
+.form {
     background-color: #124E66;
     color: #D3D9D4;
     text-align: center;
     margin: 100px auto 0 auto;
-    padding: 20px;
-    width: 40em;
+    width: 50em;
+    padding: 30px;
 }
 
 .input {
     background-color: #2E3944;
     margin: 20px auto;
+    width: 20em;
+    padding: 5px;
 }
 
-.image input {
-    width: 100%;
-}
-
-.image {
-    background-color: #2E3944;
-    margin: 20px auto;
-}
-
-.content {
-    background-color: #2E3944;
-    margin: 20px auto;
-    padding: 10px 30px;
-}
-
-.create input {
+.input input {
     margin: 15px;
     padding: 10px;
-    width: 80%;
+    width: 22em;
 }
 
-.create textarea {
-    height: 500px;
-    padding: 10px;
-    width: 91%;
-    margin-top: 15px;
+.input p {
+    color: red;
 }
 
-.submit input{
+.submit p {
+    margin: 30px 0;
+}
+
+.submit input {
     cursor: pointer;
     padding: 15px;
     background-color: #212A31;
     color: #D3D9D4;
     font-size: large;
-    width: 20%;
 }
 
 .submit input:hover {
@@ -55,12 +42,32 @@
     color: #212A31;
 }
 
-.fieldsWrapper {
-    width: 30em;
-    margin: auto;
+.link {
+    margin: 30px 0 10px 0;
 }
 
-.inputWrapper {
+.form a {
+    padding: 5px;
+    color: #D3D9D4;
+}
+
+.form a:hover {
+    transition: ease 0.15s;
+    color: #212A31;
+    background-color: #D3D9D4;
+}
+
+.header {
     display: flex;
-    justify-content: space-around;
+}
+
+.content {
+    margin: auto;
+    background-color: #2E3944;
+}
+
+.content textarea{
+    width: 95%;
+    height: 500px;
+    margin: 10px auto;
 }
