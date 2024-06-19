@@ -56,6 +56,7 @@ export default function Register() {
             <h1>Register</h1>
             <form action="">
                 <Input
+                    placeholder="e.g. ivancho123"
                     class={styles.input}
                     type="text"
                     id="username"
@@ -86,6 +87,7 @@ export default function Register() {
                     error={fieldErrors.repPass}
                 />
                 <Input
+                    placeholder="e.g. ivancho@abv.bg"
                     class={styles.input}
                     type="text"
                     id="email"

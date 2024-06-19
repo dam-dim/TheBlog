@@ -52,6 +52,7 @@ export default function Login() {
             <h1>Login</h1>
             <form action="">
                 <Input
+                    placeholder="e.g. ivancho123"
                     class={styles.input}
                     type="text"
                     id="username"

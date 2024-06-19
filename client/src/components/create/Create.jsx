@@ -57,6 +57,7 @@ export default function Create() {
             <form action="">
                 <div className={styles.header}>
                     <Input
+                        placeholder="Post Title"
                         class={styles.input}
                         type="text"
                         id="title"
@@ -67,6 +68,7 @@ export default function Create() {
                         error={fieldErrors.title}
                     />
                     <Input
+                        placeholder="Post Category"
                         class={styles.input}
                         type="text"
                         id="category"
@@ -79,6 +81,7 @@ export default function Create() {
                 </div>
 
                 <Input
+                    placeholder="Post the image link here..."
                     class={styles.input}
                     type="text"
                     id="imageUrl"
@@ -90,6 +93,7 @@ export default function Create() {
                 />
 
                 <Textarea
+                    placeholder="Post content"
                     class={styles.content}
                     id="content"
                     title="Content"

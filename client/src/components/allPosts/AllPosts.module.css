@@ -9,7 +9,7 @@
 }
 
 .allWrapper {
-    margin-top: 20px
+    margin-top: 30px
 }
 
 .filters {
@@ -20,10 +20,14 @@
 
 .filters input {
     padding: 5px;
+    border: 1px solid #212A31;
+    border-radius: 5px;
 }
 
 .filters select {
     padding: 5px;
+    border: 1px solid #212A31;
+    border-radius: 5px;
 }
 
 .filters label {
@@ -54,9 +58,12 @@
     text-decoration: none;
     color: #212A31;
     margin: 0 5px;
+    font-size: larger;
+    padding: 5px;
+    /* border: 1px solid #212A31; */
+    /* background-color: #748D92; */
 }
 
 .pagination a:hover {
-    transition: ease 0.15s;
     text-decoration: underline;
 }

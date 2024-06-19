@@ -5,6 +5,7 @@ export default function Input(props) {
         <div className={props.class}>
             <Label htmlFor={props.id} title={props.title} />
             <input
+                placeholder={props.placeholder}
                 type={props.type}
                 name={props.id}
                 id={props.id}

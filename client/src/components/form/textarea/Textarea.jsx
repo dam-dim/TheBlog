@@ -5,6 +5,7 @@ export default function Textarea(props) {
         <div className={props.class}>
             <Label htmlFor={props.id} title={props.title} />
             <textarea
+                placeholder={props.placeholder}
                 name={props.id}
                 id={props.id}
                 value={props.value}
