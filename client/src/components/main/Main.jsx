@@ -10,18 +10,10 @@ import Register from "../register/Register";
 import Dashboard from "../dashboard/Dashboard";
 import Create from "../create/Create";
 import Edit from "../edit/Edit";
-import FormParent from "../form-parent/FormParent";
 
 export default function Main() {
     return (
         <div className={styles.main}>
-            {/* <div className={styles.image}>
-                <img
-                    src="https://www.tanium.com/wp-content/uploads/WideNet-hero-scaled-e1715882718193.jpg"
-                    alt=""
-                />
-            </div> */}
-
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />
