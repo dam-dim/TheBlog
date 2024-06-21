@@ -1,68 +1,53 @@
+import { useEffect, useState } from "react";
 import styles from "./AllPosts.module.css";
+import Filters from "./filters/Filters";
 import Post from "./post/Post";
+import * as postService from "../../services/postService";
+import Pagination from "../pagination/Pagination";
 
 export default function AllPosts() {
+    const postsPerPage = 5;
+    const [currentPage, setCurrentPage] = useState(1);
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        postService.getAll().then((result) => {
+            const postsArr = Object.values(result);
+            setPosts(postsArr);
+        });
+    }, []);
+
+    const lastIndex = currentPage * postsPerPage;
+    const startingIndex = lastIndex - postsPerPage;
+    let lastPage = Math.ceil(posts.length / postsPerPage);
+
+    const currentPosts = posts.slice(startingIndex, lastIndex);
+
+    const decreasePageNumber = () => {
+        if (currentPage > 1) setCurrentPage((state) => state - 1);
+    };
+
+    const increasePageNumber = () => {
+        if (currentPage < lastPage) setCurrentPage((state) => state + 1);
+    };
+
     return (
         <div className={styles.allPosts}>
             <h1>All Posts</h1>
-            <div className={styles.filters}>
-                <div className={styles.categoryFilter}>
-                    <label htmlFor="category">Category</label>
-                    <select defaultValue="all" name="category" id="category">
-                        <option value="all">All</option>
-                        <option value="cars">Cars</option>
-                        <option value="movies">Movies</option>
-                        <option value="philosophy">Philosophy</option>
-                        <option value="webDev">Web Dev</option>
-                    </select>
-                </div>
 
-                <div className={styles.search}>
-                    <label htmlFor="search">Search</label>
-                    <input type="search" />
-                </div>
+            <Filters />
 
-                <div className={styles.sort}>
-                    <p>Sort by: </p>
-
-                    <div className={styles.titleSort}>
-                        <label htmlFor="titleSort">Title</label>
-                        <select name="titleSort" id="">
-                            <option value=""></option>
-                            <option value="ascending">Ascending</option>
-                            <option value="descending">Descending</option>
-                        </select>
-                    </div>
-
-                    <div className={styles.dateSort}>
-                        <label htmlFor="dateSort">Date</label>
-                        <select name="dateSort" id="">
-                            <option value=""></option>
-                            <option value="ascending">Newest</option>
-                            <option value="descending">Oldest</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
             <div className={styles.allWrapper}>
-                <Post />
-                <Post />
-                <Post />
+                {currentPosts.map((post) => {
+                    return <Post key={post._id} {...post} />;
+                })}
             </div>
 
-            <div className={styles.pagination}>
-                <a href="">{"|<"}</a>
-                <a href="">{"<"}</a>
-                {"\t\t\t"}
-                <a href="">1</a>
-                <a href="">
-                    <b>2</b>
-                </a>
-                <a href="">3</a>
-                {"\t\t\t"}
-                <a href="">{">"}</a>
-                <a href="">{">|"}</a>
-            </div>
+            <Pagination
+                currentPage={currentPage}
+                decreasePageNumber={decreasePageNumber}
+                increasePageNumber={increasePageNumber}
+            />
         </div>
     );
 }

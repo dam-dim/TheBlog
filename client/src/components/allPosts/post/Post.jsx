@@ -2,22 +2,19 @@ import { Link } from "react-router-dom";
 
 import styles from "./Post.module.css";
 
-export default function Post() {
+export default function Post(props) {
     return (
         <div className={styles.post}>
-            <Link to="/details">
+            <Link to={`/posts/${props._id}/details`}>
                 <div className={styles.firstCol}>
-                    <h3>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Qui adipisci minima iusto ratione voluptas, dicta fugiat
-                    </h3>
+                    <h3>{props.title}</h3>
                     <br />
 
-                    <h4>Post Category</h4>
+                    <h4>{props.category}</h4>
                 </div>
                 <div>
                     <p>@username</p>
-                    <p>19.06.24 20:02</p>
+                    <p>{props.createdAt}</p>
                 </div>
             </Link>
         </div>

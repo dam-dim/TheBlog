@@ -20,7 +20,7 @@ export default function Main() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/details" element={<Details />} />
+                <Route path="/posts/:postId/details" element={<Details />} />
                 <Route path="/create" element={<Create />} />
                 <Route path="/edit" element={<Edit />} />
                 <Route path="/fill" element={<Fill />} />

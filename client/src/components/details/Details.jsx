@@ -1,14 +1,24 @@
+import { useParams } from "react-router-dom";
 import Comments from "../comments/Comments";
 import Devider from "../devider/Devider";
 import styles from "./Details.module.css";
+import { useEffect, useState } from "react";
+import * as postService from "../../services/postService";
 
 export default function Details() {
+    const [post, setPost] = useState({});
+    const { postId } = useParams();
+
+    useEffect(() => {
+        postService.getOne(postId).then((result) => {
+            setPost(result);
+        });
+        window.scrollTo(0, 0);
+    }, [postId]);
+
     return (
         <div className={styles.details}>
-            <img
-                src="https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2022/06/How_To_Start_A_Blog_-_article_image.jpg"
-                alt=""
-            />
+            <img src={post.imageUrl} alt="" />
             <div className={styles.content}>
                 <div className={styles.creator}>
                     <img
@@ -17,58 +27,17 @@ export default function Details() {
                     />
                     <div className={styles.creatorDetails}>
                         <p>@username</p>
-                        <p>Posted on June 16, 2024 at 17:10</p>
-                        <p>Updated on June 16, 2024 at 17:10</p>
+                        <p>Posted on {post.createdAt}</p>
+                        <p>Updated on {post.editedAt}</p>
                     </div>
                 </div>
 
-                <h1>Post Title</h1>
-                <h3>Post Category</h3>
-                <p className={styles.description}>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Reprehenderit error soluta similique sit, architecto
-                    dignissimos aperiam blanditiis ullam, facere consequatur
-                    totam, debitis quo corrupti omnis. Placeat, culpa aliquid
-                    dolor eveniet, hic nobis quas tempora sunt excepturi atque
-                    ea quaerat. Eaque nam autem recusandae natus voluptatem
-                    repellendus laudantium cupiditate laborum ipsum, inventore
-                    facere at ullam quasi, deleniti odio aspernatur itaque
-                    voluptates tenetur. Facere dolores nostrum reprehenderit
-                    quisquam quis facilis fugiat rem, iste quae et maiores est
-                    error sed assumenda veritatis quo. Autem enim quod ipsum
-                    tenetur non assumenda perferendis repellendus ullam mollitia
-                    aliquid. Harum iusto assumenda eos officia nemo, aut
-                    consequatur! Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Reprehenderit error soluta similique sit,
-                    architecto dignissimos aperiam blanditiis ullam, facere
-                    consequatur totam, debitis quo corrupti omnis. Placeat,
-                    culpa aliquid dolor eveniet, hic nobis quas tempora sunt
-                    excepturi atque ea quaerat. Eaque nam autem recusandae natus
-                    voluptatem repellendus laudantium cupiditate laborum ipsum,
-                    inventore facere at ullam quasi, deleniti odio aspernatur
-                    itaque voluptates tenetur. Facere dolores nostrum
-                    reprehenderit quisquam quis facilis fugiat rem, iste quae et
-                    maiores est error sed assumenda veritatis quo. Autem enim
-                    quod ipsum tenetur non assumenda perferendis repellendus
-                    ullam mollitia aliquid. Harum iusto assumenda eos officia
-                    nemo, aut consequatur! Lorem ipsum dolor sit, amet
-                    consectetur adipisicing elit. Reprehenderit error soluta
-                    similique sit, architecto dignissimos aperiam blanditiis
-                    ullam, facere consequatur totam, debitis quo corrupti omnis.
-                    Placeat, culpa aliquid dolor eveniet, hic nobis quas tempora
-                    sunt excepturi atque ea quaerat. Eaque nam autem recusandae
-                    natus voluptatem repellendus laudantium cupiditate laborum
-                    ipsum, inventore facere at ullam quasi, deleniti odio
-                    aspernatur itaque voluptates tenetur. Facere dolores nostrum
-                    reprehenderit quisquam quis facilis fugiat rem, iste quae et
-                    maiores est error sed assumenda veritatis quo. Autem enim
-                    quod ipsum tenetur non assumenda perferendis repellendus
-                    ullam mollitia aliquid. Harum iusto assumenda eos officia
-                    nemo, aut consequatur!
-                </p>
+                <h1>{post.title}</h1>
+                <h3>{post.category}</h3>
+                <p className={styles.description}>{post.content}</p>
             </div>
-            <Devider />
-            <Comments />
+            {/* <Devider /> */}
+            {/* <Comments /> */}
         </div>
     );
 }

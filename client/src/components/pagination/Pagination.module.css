@@ -1,0 +1,19 @@
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination p{
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: #212A31;
+    margin: 0 5px;
+    font-size: larger;
+    padding: 5px;
+    /* border: 1px solid #212A31; */
+    /* background-color: #748D92; */
+}
+
+.pagination p:hover {
+    text-decoration: underline;
+}

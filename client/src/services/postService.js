@@ -46,6 +46,22 @@ export const getAll = async () => {
 };
 
 /**
+ *
+ * @param postId Id of the post that needs to be fetched
+ * @returns An object representing the post
+ */
+export const getOne = async (postId) => {
+    try {
+        const response = await fetch(`${BASE_URL}/${postId}`);
+        const result = await response.json();
+
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+/**
  * Fills the DB with dummy posts
  * @returns Promise to be resolved or rejected with an error
  */
@@ -56,7 +72,7 @@ export const fill = async () => {
     for (const dummyPost of dummyPosts) {
         await create({
             title: dummyPost.title,
-            content: dummyPost.body,
+            content: dummyPost.body.repeat(20),
             imageUrl: `https://picsum.photos/1920/1080?random=${dummyPosts.indexOf(
                 dummyPost
             )}`,
