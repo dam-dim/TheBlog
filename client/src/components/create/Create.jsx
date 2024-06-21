@@ -3,8 +3,8 @@ import styles from "./Create.module.css";
 import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
 import { validator, isValid } from "../../utils/validator";
-import { Link } from "react-router-dom";
 import Textarea from "../form/textarea/Textarea";
+import * as postService from "../../services/postService";
 
 const initialValues = {
     title: "",
@@ -17,16 +17,18 @@ export default function Create() {
     const [formValues, setFormValues] = useState(initialValues);
     const [fieldErrors, setFieldErrors] = useState(initialValues);
 
-    const onClickSubmitHandler = () => {
+    const onClickSubmitHandler = async () => {
         validate();
 
         if (isValid.submit()) {
-            // TODO: Make a POST request
-            const data = {
-                title: formValues.title,
-                category: formValues.category,
-                content: formValues.content,
-            };
+            await postService.fill();
+
+            try {
+                const result = await postService.create(formValues);
+                console.log(result);
+            } catch (error) {
+                console.log(error);
+            }
 
             setFormValues(initialValues);
         } else {
