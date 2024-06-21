@@ -3,9 +3,9 @@ import styles from "./Fill.module.css";
 
 export default function Fill() {
     const onClickHandler = async () => {
-        const allPosts = Object.values(await postService.getAll());
+        const allPosts = await postService.getAll();
 
-        if (allPosts.length === 0) await postService.fill();
+        if (allPosts === undefined) await postService.fill();
     };
     return (
         <div className={styles.fill} onClick={onClickHandler}>

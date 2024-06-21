@@ -3,10 +3,19 @@ import * as categories from "../lib/categories";
 const BASE_URL = "http://localhost:3030/jsonstore/posts";
 
 /**
+ * Creates the post and includes _id, createdAt, editedAt fields
  * @param payload Object that holds the data for the post {title, category, imageUrl, content}
  * @returns Promise either to be resolved with the newly created post with _id or rejected with an error
  */
 export const create = async (payload) => {
+    const date = new Date();
+
+    payload = {
+        ...payload,
+        createdAt: date.toISOString(),
+        editedAt: date.toISOString(),
+    };
+
     try {
         const response = await fetch(BASE_URL, {
             method: "POST",
