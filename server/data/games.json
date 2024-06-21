@@ -1,0 +1,35 @@
+{
+    "34af907f-1e7d-4f16-893b-a9278386942e": { 
+         "title": "Assassin's Creed",
+         "category": "Adventure",
+         "maxLevel": "25",
+         "imageUrl": "https://wallpaper.forfun.com/fetch/15/157077681a1afeaa08ddb38c16edf44a.jpeg",
+         "summary": "Assassin's Creed Game",
+         "_id": "34af907f-1e7d-4f16-893b-a9278386942e"
+     },
+     "6ccfe7b7-800a-418f-a886-71fde4cd4a68": {
+             "title": "Red Dead Redemption II",
+             "category": "Adventure",
+             "maxLevel": "100",
+             "imageUrl": "https://i.pinimg.com/564x/d2/a4/5c/d2a45cc2083abc8bf1c21e47e0b29c3a.jpg",
+             "summary": "Amidst the decline of the Wild West at the turn of the 20th century, outlaw Arthur Morgan and his gang struggle to cope with the loss of their way of life.",
+             "_id": "6ccfe7b7-800a-418f-a886-71fde4cd4a68"
+     },
+     "b317ce69-f16b-440b-819c-f82d06ba93d9": {
+         "title": "The Last of Us",
+         "category": "Action",
+         "maxLevel": "50",
+         "imageUrl": "https://i.pinimg.com/564x/af/ca/12/afca124bf35229da8841d24ab2ca8c0f.jpg",
+         "summary": "In a hostile, post-pandemic world, Joel and Ellie, brought together by desperate circumstances, must rely on each other to survive a brutal journey across what remains of the United States.",
+         "_id": "b317ce69-f16b-440b-819c-f82d06ba93d9"
+     },
+     "79d637ee-526c-41e0-9fdc-68bbbc7a856d": {
+         "title": "The Witcher 3: Wild Hunt",
+         "category": "Adventure",
+         "maxLevel": "150",
+         "imageUrl": "https://i.pinimg.com/564x/cb/5e/e7/cb5ee7c16d0a389f914f958d1171b1ed.jpg",
+         "summary": "The monster slayer Geralt of Rivia must find his adoptive daughter who is being pursued by the Wild Hunt, and prevent the White Frost from bringing about the end of the world.",
+         "_id": "79d637ee-526c-41e0-9fdc-68bbbc7a856d"
+     }
+     
+ }
