@@ -10,6 +10,7 @@ import Register from "../register/Register";
 import Dashboard from "../dashboard/Dashboard";
 import Create from "../create/Create";
 import Edit from "../edit/Edit";
+import Fill from "../fill/Fill";
 
 export default function Main() {
     return (
@@ -22,6 +23,7 @@ export default function Main() {
                 <Route path="/details" element={<Details />} />
                 <Route path="/create" element={<Create />} />
                 <Route path="/edit" element={<Edit />} />
+                <Route path="/fill" element={<Fill />} />
                 <Route path="*" element={<Error />} />
             </Routes>
         </div>

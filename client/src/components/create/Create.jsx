@@ -21,8 +21,6 @@ export default function Create() {
         validate();
 
         if (isValid.submit()) {
-            await postService.fill();
-
             try {
                 const result = await postService.create(formValues);
                 console.log(result);

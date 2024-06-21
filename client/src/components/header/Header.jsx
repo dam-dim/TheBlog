@@ -14,6 +14,9 @@ export default function Header() {
             <div className={styles.navigation}>
                 <ul>
                     <li>
+                        <Link to="/fill">Fill</Link>
+                    </li>
+                    <li>
                         <Link to="/">Home</Link>
                     </li>
                     <li>
