@@ -4,6 +4,7 @@ import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
 import { validator, isValid } from "../../utils/validator";
 import { Link } from "react-router-dom";
+import * as userService from "../../services/userService";
 
 const initialValues = {
     username: "",
@@ -17,7 +18,7 @@ export default function Register() {
     const [formValues, setFormValues] = useState(initialValues);
     const [fieldErrors, setFieldErrors] = useState(initialValues);
 
-    const onClickSubmitHandler = () => {
+    const onClickSubmitHandler = async () => {
         validate();
 
         if (isValid.submit()) {
@@ -27,6 +28,8 @@ export default function Register() {
                 email: formValues.email,
                 password: formValues.password,
             };
+
+            await userService.create(data);
 
             setFormValues(initialValues);
         } else {

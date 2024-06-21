@@ -1,0 +1,16 @@
+{
+    "f2aa27c5-a744-49f7-94aa-3179fd1448cb": {
+            "username": "damdim",
+            "email": "dam.dimov99@gmail.com",
+            "password": "123",
+            "_id": "f2aa27c5-a744-49f7-94aa-3179fd1448cb"
+},
+     "6ccfe7b7-800a-418f-a886-71fde4cd4a68": {
+             "title": "Red Dead Redemption II",
+             "category": "Adventure",
+             "maxLevel": "100",
+             "imageUrl": "https://i.pinimg.com/564x/d2/a4/5c/d2a45cc2083abc8bf1c21e47e0b29c3a.jpg",
+             "summary": "Amidst the decline of the Wild West at the turn of the 20th century, outlaw Arthur Morgan and his gang struggle to cope with the loss of their way of life.",
+             "_id": "6ccfe7b7-800a-418f-a886-71fde4cd4a68"
+     }
+}
