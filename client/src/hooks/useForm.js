@@ -2,16 +2,11 @@ import { useState } from "react";
 
 import { validator } from "../utils/validator";
 
-/**
- *
- * @param {*} initialValues
- * @returns
- */
-export default function useForm(initialValues) {
+export default function useForm(submitHandler, initialValues) {
     const [formValues, setFormValues] = useState(initialValues);
     const [fieldErrors, setFieldErrors] = useState(initialValues);
 
-    const onChangeFieldHandler = (e) => {
+    const onChange = (e) => {
         setFormValues((state) => {
             return { ...state, [e.target.name]: e.target.value };
         });
@@ -28,12 +23,21 @@ export default function useForm(initialValues) {
         }
     };
 
-    return [
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        validate();
+
+        submitHandler(formValues);
+
+        setFormValues(initialValues);
+    };
+
+    return {
         formValues,
-        setFormValues,
         fieldErrors,
-        onChangeFieldHandler,
+        onChange,
         onBlur,
-        validate,
-    ];
+        onSubmit,
+    };
 }

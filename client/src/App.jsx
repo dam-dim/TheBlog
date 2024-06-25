@@ -1,7 +1,7 @@
-import { BrowserRouter } from "react-router-dom";
-import { useState } from "react";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 
 import AuthContext from "./contexts/authContext";
+import usePersistedState from "./hooks/usePersistedState";
 import * as userService from "./services/userService";
 
 import Devider from "./components/devider/Devider";
@@ -18,20 +18,33 @@ const INIT_VALUES = {
 function App() {
     const { auth, setCurrentUser, removeCurrentUser } =
         usePersistedState(INIT_VALUES);
+    const navigate = useNavigate();
+
+    const loginHandler = async (payload) => {
+        const result = await userService.login(payload.email, payload.password);
+
+        setCurrentUser(result.username, result.email, result.accessToken);
+
+        navigate("/");
+    };
+
+    const logoutHandler = () => {
+        removeCurrentUser();
+        navigate("/");
+    };
 
     const values = {
         auth,
-        setCurrentUser,
-        removeCurrentUser,
+        loginHandler,
+        logoutHandler,
     };
 
     return (
         <AuthContext.Provider value={values}>
-            <BrowserRouter>
-                <Header />
-                <Main />
-                <Footer />
-            </BrowserRouter>
+            <Header />
+            <Main />
+
+            <Footer />
         </AuthContext.Provider>
     );
 }

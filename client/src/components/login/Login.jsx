@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 import { isValid } from "../../utils/validator";
 import * as userService from "../../services/userService";
+import useForm from "../../hooks/useForm";
+import AuthContext from "../../contexts/authContext";
 
 import styles from "./Login.module.css";
 
 import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
-import useForm from "../../hooks/useForm";
 
 const initialValues = {
     username: "",
@@ -16,41 +18,17 @@ const initialValues = {
 };
 
 export default function Login() {
-    const [
-        formValues,
-        setFormValues,
-        fieldErrors,
-        onChangeFieldHandler,
-        onBlur,
-        validate,
-    ] = useForm(initialValues);
+    const { loginHandler } = useContext(AuthContext);
 
-    const onClickSubmitHandler = async () => {
-        validate();
-
-        console.log(isValid.submit());
-
-        if (isValid.submit()) {
-            // TODO: Make a POST request
-            const data = {
-                username: formValues.username,
-                password: formValues.password,
-                email: formValues.email,
-            };
-
-            const result = await userService.login(data.email, data.password);
-            console.log(result);
-
-            setFormValues(initialValues);
-        } else {
-            console.log("Not valid");
-        }
-    };
+    const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
+        loginHandler,
+        initialValues
+    );
 
     return (
         <div className={styles.form}>
             <h1>Login</h1>
-            <form action="">
+            <form onSubmit={onSubmit}>
                 <Input
                     placeholder="e.g. ivancho123"
                     class={styles.input}
@@ -58,7 +36,7 @@ export default function Login() {
                     id="email"
                     title="Email"
                     value={formValues.email}
-                    onChange={onChangeFieldHandler}
+                    onChange={onChange}
                     onBlur={onBlur}
                     error={fieldErrors.email}
                 />
@@ -68,7 +46,7 @@ export default function Login() {
                     id="password"
                     title="Password"
                     value={formValues.password}
-                    onChange={onChangeFieldHandler}
+                    onChange={onChange}
                     onBlur={onBlur}
                     error={fieldErrors.password}
                 />
@@ -77,7 +55,6 @@ export default function Login() {
                     class={styles.submit}
                     buttonText="Login"
                     error={fieldErrors.submit}
-                    onClick={onClickSubmitHandler}
                 />
             </form>
             <div className={styles.link}>

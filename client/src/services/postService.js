@@ -19,7 +19,9 @@ export const create = async (payload) => {
     try {
         const response = await fetch(BASE_URL, {
             method: "POST",
-            "Content-Type": "application/json",
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify(payload),
         });
 

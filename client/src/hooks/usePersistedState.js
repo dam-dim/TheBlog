@@ -5,7 +5,7 @@ export default function usePersistedState(initialValue) {
 
     const setCurrentUser = (username, email, token) => {
         setAuth({ username, email, token });
-        localStorage.setItem("currentUser", { username, email, token });
+        localStorage.setItem("currentUser", { username, email });
     };
 
     const removeCurrentUser = () => {

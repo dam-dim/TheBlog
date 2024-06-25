@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { useContext } from "react";
 
 import styles from "./Main.module.css";
+import AuthContext from "../../contexts/authContext";
 
 import Home from "../home/Home";
 import Login from "../login/Login";
@@ -12,10 +13,9 @@ import Dashboard from "../dashboard/Dashboard";
 import Create from "../create/Create";
 import Edit from "../edit/Edit";
 import Fill from "../fill/Fill";
-import AuthContext from "../../contexts/authContext";
+import Logout from "../logout/Logout";
 
 export default function Main() {
-    const { auth } = useContext(AuthContext);
     return (
         <div className={styles.main}>
             <Routes>
@@ -27,6 +27,7 @@ export default function Main() {
                 <Route path="/create" element={<Create />} />
                 <Route path="/edit" element={<Edit />} />
                 <Route path="/fill" element={<Fill />} />
+                <Route path="/logout" element={<Logout />} />
                 <Route path="*" element={<Error />} />
             </Routes>
         </div>
