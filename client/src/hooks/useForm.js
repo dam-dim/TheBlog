@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { validator } from "../utils/validator";
+import { validator, errors } from "../utils/validator";
 
 export default function useForm(submitHandler, initialValues) {
     const [formValues, setFormValues] = useState(initialValues);
@@ -28,9 +28,10 @@ export default function useForm(submitHandler, initialValues) {
 
         validate();
 
-        submitHandler(formValues);
-
-        setFormValues(initialValues);
+        if (errors.submit === "") {
+            submitHandler(formValues);
+            setFormValues(initialValues);
+        }
     };
 
     return {

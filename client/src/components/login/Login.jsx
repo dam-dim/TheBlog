@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
-import { isValid } from "../../utils/validator";
-import * as userService from "../../services/userService";
 import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/authContext";
 
@@ -15,6 +13,7 @@ const initialValues = {
     username: "",
     password: "",
     email: "",
+    submit: "",
 };
 
 export default function Login() {

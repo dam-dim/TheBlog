@@ -29,10 +29,19 @@ export default function Header() {
                             <li>
                                 <Link to="/fill">Fill</Link>
                             </li>
-
                             <li>
                                 <Link to="/logout">Logout</Link>
                             </li>
+                            <span
+                                style={{
+                                    color: "#D3D9D4",
+                                    marginLeft: "30px",
+                                    border: "1px solid #D3D9D4",
+                                    padding: "10px",
+                                }}
+                            >
+                                Welcome, {auth.username}
+                            </span>
                         </>
                     ) : (
                         <>

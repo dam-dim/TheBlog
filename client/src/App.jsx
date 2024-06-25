@@ -22,10 +22,19 @@ function App() {
 
     const loginHandler = async (payload) => {
         const result = await userService.login(payload.email, payload.password);
-
         setCurrentUser(result.username, result.email, result.accessToken);
-
         navigate("/");
+    };
+
+    const registerHandler = async (payload) => {
+        const data = {
+            username: payload.username,
+            password: payload.password,
+            email: payload.email,
+        };
+
+        await userService.register(data);
+        navigate("/login");
     };
 
     const logoutHandler = () => {
@@ -36,16 +45,18 @@ function App() {
     const values = {
         auth,
         loginHandler,
+        registerHandler,
         logoutHandler,
     };
 
     return (
-        <AuthContext.Provider value={values}>
-            <Header />
-            <Main />
-
+        <>
+            <AuthContext.Provider value={values}>
+                <Header />
+                <Main />
+            </AuthContext.Provider>
             <Footer />
-        </AuthContext.Provider>
+        </>
     );
 }
 

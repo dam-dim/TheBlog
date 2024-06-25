@@ -1,4 +1,4 @@
-const errors = {
+export const errors = {
     username: "",
     email: "",
     password: "",

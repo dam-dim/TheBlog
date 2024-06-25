@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+
+import useForm from "../../hooks/useForm";
+import AuthContext from "../../contexts/authContext";
+
 import styles from "./Register.module.css";
+
 import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
-import { validator, isValid } from "../../utils/validator";
-import { Link } from "react-router-dom";
-import * as userService from "../../services/userService";
 
 const initialValues = {
     username: "",
@@ -15,49 +18,17 @@ const initialValues = {
 };
 
 export default function Register() {
-    const [formValues, setFormValues] = useState(initialValues);
-    const [fieldErrors, setFieldErrors] = useState(initialValues);
+    const { registerHandler } = useContext(AuthContext);
 
-    const onClickSubmitHandler = async () => {
-        validate();
-
-        if (isValid.submit()) {
-            // TODO: Make a POST request
-            const data = {
-                username: formValues.username,
-                email: formValues.email,
-                password: formValues.password,
-            };
-
-            await userService.create(data);
-
-            setFormValues(initialValues);
-        } else {
-            //
-        }
-    };
-
-    const onChangeFieldHandler = (e) => {
-        setFormValues((state) => {
-            return { ...state, [e.target.name]: e.target.value };
-        });
-    };
-
-    const onBlur = () => validate();
-
-    const validate = () => {
-        for (const key in initialValues) {
-            const result = validator[key](formValues[key], formValues.password);
-            setFieldErrors((state) => {
-                return { ...state, [key]: result };
-            });
-        }
-    };
+    const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
+        registerHandler,
+        initialValues
+    );
 
     return (
         <div className={styles.form}>
             <h1>Register</h1>
-            <form action="">
+            <form onSubmit={onSubmit}>
                 <Input
                     placeholder="e.g. ivancho123"
                     class={styles.input}
@@ -65,7 +36,7 @@ export default function Register() {
                     id="username"
                     title="Username"
                     value={formValues.username}
-                    onChange={onChangeFieldHandler}
+                    onChange={onChange}
                     onBlur={onBlur}
                     error={fieldErrors.username}
                 />
@@ -75,7 +46,7 @@ export default function Register() {
                     id="password"
                     title="Password"
                     value={formValues.password}
-                    onChange={onChangeFieldHandler}
+                    onChange={onChange}
                     onBlur={onBlur}
                     error={fieldErrors.password}
                 />
@@ -85,7 +56,7 @@ export default function Register() {
                     id="repPass"
                     title="Repeat Password"
                     value={formValues.repPass}
-                    onChange={onChangeFieldHandler}
+                    onChange={onChange}
                     onBlur={onBlur}
                     error={fieldErrors.repPass}
                 />
@@ -96,7 +67,7 @@ export default function Register() {
                     id="email"
                     title="Email"
                     value={formValues.email}
-                    onChange={onChangeFieldHandler}
+                    onChange={onChange}
                     onBlur={onBlur}
                     error={fieldErrors.email}
                 />
@@ -104,7 +75,6 @@ export default function Register() {
                     class={styles.submit}
                     buttonText="Register"
                     error={fieldErrors.submit}
-                    onClick={onClickSubmitHandler}
                 />
             </form>
             <div className={styles.link}>

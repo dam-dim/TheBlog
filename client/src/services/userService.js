@@ -5,8 +5,6 @@ const BASE_URL = "http://localhost:3030/users";
  * @return A promise to be either resolved with the created user with generated _id or rejected with an Error
  */
 export const register = async (payload) => {
-    // TODO: use bcrypt for hashing the password maybe ?
-
     const response = await fetch(`${BASE_URL}/register`, {
         method: "POST",
         "Content-Type": "application/json",
@@ -14,8 +12,6 @@ export const register = async (payload) => {
     });
 
     const result = await response.json();
-
-    console.log(result);
 
     return result;
 };
