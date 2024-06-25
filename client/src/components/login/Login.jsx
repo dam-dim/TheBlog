@@ -10,7 +10,6 @@ import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
 
 const initialValues = {
-    username: "",
     password: "",
     email: "",
     submit: "",
@@ -19,10 +18,8 @@ const initialValues = {
 export default function Login() {
     const { loginHandler } = useContext(AuthContext);
 
-    const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
-        loginHandler,
-        initialValues
-    );
+    const { formValues, fieldErrors, fetchError, onChange, onBlur, onSubmit } =
+        useForm(loginHandler, initialValues);
 
     return (
         <div className={styles.form}>
@@ -54,6 +51,7 @@ export default function Login() {
                     class={styles.submit}
                     buttonText="Login"
                     error={fieldErrors.submit}
+                    fetchError={fetchError}
                 />
             </form>
             <div className={styles.link}>

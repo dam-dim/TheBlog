@@ -21,20 +21,32 @@ function App() {
     const navigate = useNavigate();
 
     const loginHandler = async (payload) => {
-        const result = await userService.login(payload.email, payload.password);
-        setCurrentUser(result.username, result.email, result.accessToken);
-        navigate("/");
+        try {
+            const result = await userService.login(
+                payload.email,
+                payload.password
+            );
+
+            setCurrentUser(result.username, result.email, result.accessToken);
+            navigate("/");
+        } catch (error) {
+            throw new Error(error.message);
+        }
     };
 
     const registerHandler = async (payload) => {
-        const data = {
-            username: payload.username,
-            password: payload.password,
-            email: payload.email,
-        };
+        try {
+            const data = {
+                username: payload.username,
+                password: payload.password,
+                email: payload.email,
+            };
 
-        await userService.register(data);
-        navigate("/login");
+            await userService.register(data);
+            navigate("/login");
+        } catch (error) {
+            throw new Error(error.message);
+        }
     };
 
     const logoutHandler = () => {

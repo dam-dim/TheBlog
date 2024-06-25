@@ -5,15 +5,23 @@ const BASE_URL = "http://localhost:3030/users";
  * @return A promise to be either resolved with the created user with generated _id or rejected with an Error
  */
 export const register = async (payload) => {
-    const response = await fetch(`${BASE_URL}/register`, {
-        method: "POST",
-        "Content-Type": "application/json",
-        body: JSON.stringify(payload),
-    });
+    try {
+        const response = await fetch(`${BASE_URL}/register`, {
+            method: "POST",
+            "Content-Type": "application/json",
+            body: JSON.stringify(payload),
+        });
 
-    const result = await response.json();
+        const result = await response.json();
 
-    return result;
+        if (!response.ok) {
+            throw new Error(result.message);
+        }
+
+        return result;
+    } catch (error) {
+        throw new Error(error.message);
+    }
 };
 
 /**
@@ -23,13 +31,23 @@ export const register = async (payload) => {
  * @returns
  */
 export const login = async (email, password) => {
-    const response = await fetch(`${BASE_URL}/login`, {
-        method: "POST",
-        "Content-Type": "application/json",
-        body: JSON.stringify({ email, password }),
-    });
+    try {
+        const response = await fetch(`${BASE_URL}/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        });
 
-    const result = await response.json();
+        const result = await response.json();
 
-    return result;
+        if (!response.ok) {
+            throw new Error(result.message);
+        }
+
+        return result;
+    } catch (error) {
+        throw new Error(error.message);
+    }
 };

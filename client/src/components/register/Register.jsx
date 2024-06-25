@@ -20,10 +20,8 @@ const initialValues = {
 export default function Register() {
     const { registerHandler } = useContext(AuthContext);
 
-    const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
-        registerHandler,
-        initialValues
-    );
+    const { formValues, fieldErrors, fetchError, onChange, onBlur, onSubmit } =
+        useForm(registerHandler, initialValues);
 
     return (
         <div className={styles.form}>
@@ -75,6 +73,7 @@ export default function Register() {
                     class={styles.submit}
                     buttonText="Register"
                     error={fieldErrors.submit}
+                    fetchError={fetchError}
                 />
             </form>
             <div className={styles.link}>
