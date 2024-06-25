@@ -12,8 +12,7 @@ export default function AllPosts() {
 
     useEffect(() => {
         postService.getAll().then((result) => {
-            const postsArr = Object.values(result);
-            setPosts(postsArr);
+            setPosts(result);
         });
     }, []);
 

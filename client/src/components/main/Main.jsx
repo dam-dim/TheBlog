@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { useContext } from "react";
 
 import styles from "./Main.module.css";
 
@@ -11,8 +12,10 @@ import Dashboard from "../dashboard/Dashboard";
 import Create from "../create/Create";
 import Edit from "../edit/Edit";
 import Fill from "../fill/Fill";
+import AuthContext from "../../contexts/authContext";
 
 export default function Main() {
+    const { auth } = useContext(AuthContext);
     return (
         <div className={styles.main}>
             <Routes>
