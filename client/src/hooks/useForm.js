@@ -27,6 +27,8 @@ export default function useForm(submitHandler, initialValues) {
     const onSubmit = async (e) => {
         e.preventDefault();
 
+        setFetchError("");
+
         validate();
 
         if (errors.submit === "") {

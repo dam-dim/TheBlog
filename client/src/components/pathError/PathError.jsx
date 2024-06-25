@@ -1,6 +1,6 @@
-import styles from "./Error.module.css";
+import styles from "./PathError.module.css";
 
-export default function Error() {
+export default function PathError() {
     return (
         <div className={styles.error}>
             <h1>An error occured!</h1>

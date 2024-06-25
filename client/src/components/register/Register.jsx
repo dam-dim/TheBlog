@@ -73,7 +73,6 @@ export default function Register() {
                     class={styles.submit}
                     buttonText="Register"
                     error={fieldErrors.submit}
-                    fetchError={fetchError}
                 />
             </form>
             <div className={styles.link}>

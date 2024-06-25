@@ -1,13 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import { useContext } from "react";
 
 import styles from "./Main.module.css";
-import AuthContext from "../../contexts/authContext";
 
 import Home from "../home/Home";
 import Login from "../login/Login";
 import Details from "../details/Details";
-import Error from "../error/Error";
+import PathError from "../pathError/PathError";
 import Register from "../register/Register";
 import Dashboard from "../dashboard/Dashboard";
 import Create from "../create/Create";
@@ -28,7 +26,7 @@ export default function Main() {
                 <Route path="/edit" element={<Edit />} />
                 <Route path="/fill" element={<Fill />} />
                 <Route path="/logout" element={<Logout />} />
-                <Route path="*" element={<Error />} />
+                <Route path="*" element={<PathError />} />
             </Routes>
         </div>
     );

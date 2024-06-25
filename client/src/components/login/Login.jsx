@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import useForm from "../../hooks/useForm";
@@ -16,50 +16,56 @@ const initialValues = {
 };
 
 export default function Login() {
-    const { loginHandler } = useContext(AuthContext);
+    const { loginHandler, fireError } = useContext(AuthContext);
 
     const { formValues, fieldErrors, fetchError, onChange, onBlur, onSubmit } =
         useForm(loginHandler, initialValues);
 
-    return (
-        <div className={styles.form}>
-            <h1>Login</h1>
-            <form onSubmit={onSubmit}>
-                <Input
-                    placeholder="e.g. ivancho123"
-                    class={styles.input}
-                    type="text"
-                    id="email"
-                    title="Email"
-                    value={formValues.email}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    error={fieldErrors.email}
-                />
-                <Input
-                    class={styles.input}
-                    type="password"
-                    id="password"
-                    title="Password"
-                    value={formValues.password}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    error={fieldErrors.password}
-                />
+    useEffect(() => {
+        fireError([fetchError]);
+    }, [fetchError]);
 
-                <Submit
-                    class={styles.submit}
-                    buttonText="Login"
-                    error={fieldErrors.submit}
-                    fetchError={fetchError}
-                />
-            </form>
-            <div className={styles.link}>
-                <p>
-                    If You don't have have an account, You can register{" "}
-                    <Link to="/register">here.</Link>
-                </p>
+    return (
+        <>
+            <div className={styles.form}>
+                <h1>Login</h1>
+
+                <form onSubmit={onSubmit}>
+                    <Input
+                        placeholder="e.g. ivancho123"
+                        class={styles.input}
+                        type="text"
+                        id="email"
+                        title="Email"
+                        value={formValues.email}
+                        onChange={onChange}
+                        onBlur={onBlur}
+                        error={fieldErrors.email}
+                    />
+                    <Input
+                        class={styles.input}
+                        type="password"
+                        id="password"
+                        title="Password"
+                        value={formValues.password}
+                        onChange={onChange}
+                        onBlur={onBlur}
+                        error={fieldErrors.password}
+                    />
+
+                    <Submit
+                        class={styles.submit}
+                        buttonText="Login"
+                        error={fieldErrors.submit}
+                    />
+                </form>
+                <div className={styles.link}>
+                    <p>
+                        If You don't have have an account, You can register{" "}
+                        <Link to="/register">here.</Link>
+                    </p>
+                </div>
             </div>
-        </div>
+        </>
     );
 }

@@ -1,0 +1,16 @@
+.myErrors {
+    position: fixed;
+    top: 150px;
+    left: 10px;
+    color: #D3D9D4;
+}
+
+.myError {
+    background-color: #2E3944;
+    width: 300px;
+    margin: 10px 0;
+}
+
+.myError h4 {
+    padding: 20px;
+}
