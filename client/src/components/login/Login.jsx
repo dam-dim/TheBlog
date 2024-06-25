@@ -1,20 +1,25 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import { validator, isValid } from "../../utils/validator";
+import * as userService from "../../services/userService";
+
 import styles from "./Login.module.css";
+
 import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
-import { validator, isValid } from "../../utils/validator";
-import { Link } from "react-router-dom";
 
 const initialValues = {
     username: "",
     password: "",
+    email: "",
 };
 
 export default function Login() {
     const [formValues, setFormValues] = useState(initialValues);
     const [fieldErrors, setFieldErrors] = useState(initialValues);
 
-    const onClickSubmitHandler = () => {
+    const onClickSubmitHandler = async () => {
         validate();
 
         if (isValid.submit()) {
@@ -22,7 +27,11 @@ export default function Login() {
             const data = {
                 username: formValues.username,
                 password: formValues.password,
+                email: formValues.email,
             };
+
+            const result = await userService.login(data.email, data.password);
+            console.log(result);
 
             setFormValues(initialValues);
         } else {
@@ -55,12 +64,12 @@ export default function Login() {
                     placeholder="e.g. ivancho123"
                     class={styles.input}
                     type="text"
-                    id="username"
-                    title="Username"
-                    value={formValues.username}
+                    id="email"
+                    title="Email"
+                    value={formValues.email}
                     onChange={onChangeFieldHandler}
                     onBlur={onBlur}
-                    error={fieldErrors.username}
+                    error={fieldErrors.email}
                 />
                 <Input
                     class={styles.input}

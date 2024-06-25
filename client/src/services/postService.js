@@ -1,6 +1,6 @@
 import * as categories from "../lib/categories";
 
-const BASE_URL = "http://localhost:3030/jsonstore/posts";
+const BASE_URL = "http://localhost:3030/data/posts";
 
 /**
  * Creates the post and includes _id, createdAt, editedAt fields

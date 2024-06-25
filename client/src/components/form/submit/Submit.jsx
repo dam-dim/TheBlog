@@ -1,3 +1,8 @@
+/**
+ *
+ * @param {*} props
+ * @returns
+ */
 export default function Submit(props) {
     return (
         <div className={props.class}>
