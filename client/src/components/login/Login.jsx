@@ -1,13 +1,13 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { validator, isValid } from "../../utils/validator";
+import { isValid } from "../../utils/validator";
 import * as userService from "../../services/userService";
 
 import styles from "./Login.module.css";
 
 import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
+import useForm from "../../hooks/useForm";
 
 const initialValues = {
     username: "",
@@ -16,11 +16,19 @@ const initialValues = {
 };
 
 export default function Login() {
-    const [formValues, setFormValues] = useState(initialValues);
-    const [fieldErrors, setFieldErrors] = useState(initialValues);
+    const [
+        formValues,
+        setFormValues,
+        fieldErrors,
+        onChangeFieldHandler,
+        onBlur,
+        validate,
+    ] = useForm(initialValues);
 
     const onClickSubmitHandler = async () => {
         validate();
+
+        console.log(isValid.submit());
 
         if (isValid.submit()) {
             // TODO: Make a POST request
@@ -35,24 +43,7 @@ export default function Login() {
 
             setFormValues(initialValues);
         } else {
-            //
-        }
-    };
-
-    const onChangeFieldHandler = (e) => {
-        setFormValues((state) => {
-            return { ...state, [e.target.name]: e.target.value };
-        });
-    };
-
-    const onBlur = () => validate();
-
-    const validate = () => {
-        for (const key in initialValues) {
-            const result = validator[key](formValues[key], formValues.password);
-            setFieldErrors((state) => {
-                return { ...state, [key]: result };
-            });
+            console.log("Not valid");
         }
     };
 
