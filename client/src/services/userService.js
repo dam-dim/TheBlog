@@ -1,10 +1,11 @@
 import * as request from "../lib/request";
 
 const BASE_URL = "http://localhost:3030/users";
+const DATA_URL = "http://localhost:3030/data/users";
 
 export const register = async (payload) => {
     try {
-        const result = request.post(`${BASE_URL}/register`, payload);
+        const result = await request.post(`${BASE_URL}/register`, payload);
         return result;
     } catch (error) {
         throw new Error(error.message);

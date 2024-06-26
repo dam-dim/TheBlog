@@ -35,8 +35,9 @@ export default function Register() {
                 email: payload.email,
             };
 
-            await userService.register(data);
-            navigate("/login");
+            const result = await userService.register(data);
+            setCurrentUser(result.username, result.email, result.accessToken);
+            navigate("/");
         } catch (error) {
             throw error;
         }
