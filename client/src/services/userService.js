@@ -1,4 +1,4 @@
-import * as request from "../utils/request";
+import * as request from "../lib/request";
 
 const BASE_URL = "http://localhost:3030/users";
 

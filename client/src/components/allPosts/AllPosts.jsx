@@ -11,9 +11,10 @@ export default function AllPosts() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        postService.getAll().then((result) => {
-            setPosts(result);
-        });
+        postService
+            .getAll()
+            .then(setPosts)
+            .catch((err) => console.log(err));
     }, []);
 
     const lastIndex = currentPage * postsPerPage;

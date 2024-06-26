@@ -1,36 +1,29 @@
-/**
- *
- * @param {*} url
- * @param {*} method
- * @param {*} data
- * @returns
- * @throws
- */
 const request = async (url, method, data) => {
-    const response = await fetch(url, { ...getOptions(data), method });
+    try {
+        const response = await fetch(url, { ...getOptions(data), method });
 
-    if (response.status === 204) return {};
+        if (response.status === 204) return {};
 
-    const result = await response.json();
+        const result = await response.json();
 
-    if (!response.ok) {
-        throw result;
+        if (!response.ok) {
+            throw result;
+        }
+
+        return result;
+    } catch (error) {
+        throw error;
     }
-
-    return result;
 };
 
-/**
- *
- * @param {*} data
- * @returns options
- */
 const getOptions = (data) => {
     const options = {};
 
     if (data) {
         options.headers = { "Content-Type": "application/json" };
         options.body = JSON.stringify(data);
+    } else {
+        return options;
     }
 
     const token = localStorage.getItem("token");

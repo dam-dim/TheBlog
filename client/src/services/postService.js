@@ -1,4 +1,5 @@
 import * as categories from "../lib/categories";
+import * as request from "../lib/request";
 
 const BASE_URL = "http://localhost:3030/data/posts";
 
@@ -10,26 +11,11 @@ const BASE_URL = "http://localhost:3030/data/posts";
 export const create = async (payload) => {
     const date = new Date();
 
-    payload = {
-        ...payload,
-        createdAt: date.toISOString(),
-        editedAt: date.toISOString(),
-    };
-
     try {
-        const response = await fetch(BASE_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-        });
-
-        const result = await response.json();
-
+        const result = await request.post(BASE_URL, payload);
         return result;
     } catch (error) {
-        throw new Error(error);
+        throw new Error(error.message);
     }
 };
 
@@ -38,12 +24,10 @@ export const create = async (payload) => {
  */
 export const getAll = async () => {
     try {
-        const response = await fetch(BASE_URL);
-        const result = await response.json();
-
+        const result = await request.get(BASE_URL);
         return result;
     } catch (error) {
-        console.log(error);
+        throw error;
     }
 };
 
@@ -54,12 +38,10 @@ export const getAll = async () => {
  */
 export const getOne = async (postId) => {
     try {
-        const response = await fetch(`${BASE_URL}/${postId}`);
-        const result = await response.json();
-
+        const result = await request.get(`${BASE_URL}/${postId}`);
         return result;
     } catch (error) {
-        console.log(error);
+        throw error;
     }
 };
 
@@ -72,13 +54,17 @@ export const fill = async () => {
     const dummyPosts = await response.json();
 
     for (const dummyPost of dummyPosts) {
-        await create({
-            title: dummyPost.title,
-            content: dummyPost.body.repeat(20),
-            imageUrl: `https://picsum.photos/1920/1080?random=${dummyPosts.indexOf(
-                dummyPost
-            )}`,
-            category: categories.getRandom(),
-        });
+        try {
+            await create({
+                title: dummyPost.title,
+                content: dummyPost.body.repeat(20),
+                imageUrl: `https://picsum.photos/1920/1080?random=${dummyPosts.indexOf(
+                    dummyPost
+                )}`,
+                category: categories.getRandom(),
+            });
+        } catch (error) {
+            throw error;
+        }
     }
 };
