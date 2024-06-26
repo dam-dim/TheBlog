@@ -14,6 +14,7 @@ import Fill from "../fill/Fill";
 import Logout from "../logout/Logout";
 import { useContext } from "react";
 import AuthContext from "../../contexts/authContext";
+import Delete from "../delete/Delete";
 
 export default function Main() {
     const { currentUser } = useContext(AuthContext);
@@ -29,6 +30,10 @@ export default function Main() {
                         <Route path="/fill" element={<Fill />} />
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/posts/:postId/edit" element={<Edit />} />
+                        <Route
+                            path="/posts/:postId/delete"
+                            element={<Delete />}
+                        />
                     </>
                 ) : (
                     <>

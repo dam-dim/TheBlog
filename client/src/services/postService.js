@@ -73,6 +73,14 @@ export const edit = async (payload) => {
     }
 };
 
+export const remove = async (postId) => {
+    try {
+        await request.remove(`${BASE_URL}/${postId}`);
+    } catch (error) {
+        throw error;
+    }
+};
+
 /**
  * Fills the DB with dummy posts
  * @returns Promise to be resolved or rejected with an error

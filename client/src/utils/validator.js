@@ -59,6 +59,7 @@ const validateEmail = (...props) => {
 };
 
 const validateTitle = (...props) => {
+    console.log(props);
     const title = props[0].trim();
 
     if (title === "") return (errors.title = "Title is required!");

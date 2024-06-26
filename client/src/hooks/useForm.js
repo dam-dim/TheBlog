@@ -4,7 +4,15 @@ import { validator, errors } from "../utils/validator";
 
 export default function useForm(submitHandler, initialValues) {
     const [formValues, setFormValues] = useState(initialValues);
-    const [fieldErrors, setFieldErrors] = useState(initialValues);
+    const [fieldErrors, setFieldErrors] = useState(() => {
+        const emptyErrors = {};
+
+        for (const key in initialValues) {
+            emptyErrors[key] = "";
+        }
+
+        return emptyErrors;
+    });
     const [fetchError, setFetchError] = useState("");
 
     const onChange = (e) => {
@@ -17,7 +25,11 @@ export default function useForm(submitHandler, initialValues) {
 
     const validate = () => {
         for (const key in initialValues) {
-            const result = validator[key](formValues[key], formValues.password);
+            console.log(formValues[key]);
+            const result = validator[key](
+                formValues[key],
+                formValues?.password
+            );
             setFieldErrors((state) => {
                 return { ...state, [key]: result };
             });

@@ -23,6 +23,8 @@ export default function Edit() {
     const { postId } = useParams();
     const navigate = useNavigate();
 
+    // TOOOOOOOOODOOOOOOOOOOOOOOO
+
     useEffect(() => {
         postService
             .getPostById(postId)
@@ -33,10 +35,7 @@ export default function Edit() {
     const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
         onSubmitHandler,
         {
-            title: post.title,
-            category: post.category,
-            imageUrl: post.imageUrl,
-            content: post.content,
+            ...post,
             submit: "",
         }
     );
