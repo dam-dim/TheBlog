@@ -1240,7 +1240,7 @@
                     }).length !== 0
                 ) {
                     throw new ConflictError$1(
-                        `A user with the same ${identity} already exists`
+                        `A user with the same ${identity} already exists!`
                     );
                 } else {
                     const newUser = Object.assign({}, body, {
@@ -1275,12 +1275,12 @@
                         return result;
                     } else {
                         throw new CredentialError$1(
-                            "Login or password don't match"
+                            "Username or password don't match!"
                         );
                     }
                 } else {
                     throw new CredentialError$1(
-                        "Login or password don't match"
+                        "Username or password don't match!"
                     );
                 }
             }
@@ -1530,6 +1530,7 @@
     };
     var seedData = {
         posts: {},
+        users: {},
     };
     var rules$1 = {
         users: {

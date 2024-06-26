@@ -9,7 +9,10 @@ const BASE_URL = "http://localhost:3030/data/posts";
  * @returns Promise either to be resolved with the newly created post with _id or rejected with an error
  */
 export const create = async (payload) => {
-    const date = new Date();
+    payload = {
+        ...payload,
+        owner: localStorage.getItem("username"),
+    };
 
     try {
         const result = await request.post(BASE_URL, payload);
@@ -36,7 +39,7 @@ export const getAll = async () => {
  * @param postId Id of the post that needs to be fetched
  * @returns An object representing the post
  */
-export const getOne = async (postId) => {
+export const getPostById = async (postId) => {
     try {
         const result = await request.get(`${BASE_URL}/${postId}`);
         return result;
@@ -57,7 +60,7 @@ export const fill = async () => {
         try {
             await create({
                 title: dummyPost.title,
-                content: dummyPost.body.repeat(20),
+                content: dummyPost.body.repeat(10),
                 imageUrl: `https://picsum.photos/1920/1080?random=${dummyPosts.indexOf(
                     dummyPost
                 )}`,

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+
 import styles from "./AllPosts.module.css";
+import * as postService from "../../../services/postService";
+
 import Filters from "./filters/Filters";
 import Post from "./post/Post";
-import * as postService from "../../services/postService";
-import Pagination from "../pagination/Pagination";
+import Pagination from "../../pagination/Pagination";
 
 export default function AllPosts() {
     const postsPerPage = 5;

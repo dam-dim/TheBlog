@@ -10,9 +10,11 @@ export default function Details() {
     const { postId } = useParams();
 
     useEffect(() => {
-        postService.getOne(postId).then((result) => {
-            setPost(result);
-        });
+        postService
+            .getPostById(postId)
+            .then(setPost)
+            .catch((err) => console.log(err));
+
         window.scrollTo(0, 0);
     }, [postId]);
 
@@ -26,9 +28,9 @@ export default function Details() {
                         alt=""
                     />
                     <div className={styles.creatorDetails}>
-                        <p>@username</p>
-                        <p>Posted on {post.createdAt}</p>
-                        <p>Updated on {post.editedAt}</p>
+                        <p>@{post.owner}</p>
+                        <p>Posted on {post._createdOn}</p>
+                        {post.editedAt && <p>Updated on {post.editedAt}</p>}
                     </div>
                 </div>
 
