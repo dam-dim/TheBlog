@@ -48,6 +48,17 @@ export const getPostById = async (postId) => {
     }
 };
 
+export const getByAuthorId = async (authorId) => {
+    try {
+        const result = await request.get(
+            `${BASE_URL}?where=_ownerId%3D"${authorId}"`
+        );
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
+
 /**
  * Fills the DB with dummy posts
  * @returns Promise to be resolved or rejected with an error

@@ -1,8 +1,27 @@
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./Dashboard.module.css";
+import AuthContext from "../../contexts/authContext";
+import * as userService from "../../services/userService";
+import * as postService from "../../services/postService";
 
 export default function Dashboard() {
+    const { currentUser } = useContext(AuthContext);
+    const [myPosts, setMyPosts] = useState([]);
+
+    useEffect(() => {
+        userService
+            .me()
+            .then((result) => {
+                postService
+                    .getByAuthorId(result._id)
+                    .then(setMyPosts)
+                    .catch((err) => console.log(err.message));
+            })
+            .catch((err) => console.log(err));
+    }, []);
+
     return (
         <div className={styles.dashboard}>
             <h1>Dashboard</h1>
@@ -28,87 +47,47 @@ export default function Dashboard() {
                             <th></th>
                         </tr>
                     </thead>
+                    {myPosts.length === 0 && (
+                        <tbody>
+                            <tr>
+                                <td>No posts yet!</td>
+                            </tr>
+                        </tbody>
+                    )}
                     <tbody>
-                        <tr>
-                            <td>Post Title</td>
-                            <td>17.06.24 11:58</td>
-                            <td>17.06.24 11:58</td>
-                            <td>
-                                <Link className={styles.details} to="/details">
-                                    Details
-                                </Link>
-                            </td>
-                            <td>
-                                <Link className={styles.edit} to="/edit">
-                                    Edit
-                                </Link>
-                            </td>
-                            <td>
-                                <Link className={styles.delete} to="/delete">
-                                    Delete
-                                </Link>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Post Title</td>
-                            <td>17.06.24 11:58</td>
-                            <td>17.06.24 11:58</td>
-                            <td>
-                                <Link className={styles.details} to="/details">
-                                    Details
-                                </Link>
-                            </td>
-                            <td>
-                                <Link className={styles.edit} to="/edit">
-                                    Edit
-                                </Link>
-                            </td>
-                            <td>
-                                <Link className={styles.delete} to="/delete">
-                                    Delete
-                                </Link>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Post Title</td>
-                            <td>17.06.24 11:58</td>
-                            <td>17.06.24 11:58</td>
-                            <td>
-                                <Link className={styles.details} to="/details">
-                                    Details
-                                </Link>
-                            </td>
-                            <td>
-                                <Link className={styles.edit} to="/edit">
-                                    Edit
-                                </Link>
-                            </td>
-                            <td>
-                                <Link className={styles.delete} to="/delete">
-                                    Delete
-                                </Link>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Post Title</td>
-                            <td>17.06.24 11:58</td>
-                            <td>17.06.24 11:58</td>
-                            <td>
-                                <Link className={styles.details} to="/details">
-                                    Details
-                                </Link>
-                            </td>
-                            <td>
-                                <Link className={styles.edit} to="/edit">
-                                    Edit
-                                </Link>
-                            </td>
-                            <td>
-                                <Link className={styles.delete} to="/delete">
-                                    Delete
-                                </Link>
-                            </td>
-                        </tr>
+                        {myPosts.map((myPost) => {
+                            return (
+                                <tr key={myPost._id}>
+                                    <td>{myPost.title}</td>
+                                    <td>{myPost._createdOn}</td>
+                                    <td>17.06.24 11:58</td>
+                                    <td>
+                                        <Link
+                                            className={styles.details}
+                                            to={`/posts/${myPost._id}/details`}
+                                        >
+                                            Details
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link
+                                            className={styles.edit}
+                                            to={`/posts/${myPost._id}/edit`}
+                                        >
+                                            Edit
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link
+                                            className={styles.delete}
+                                            to={`/posts/${myPost._id}/delete`}
+                                        >
+                                            Delete
+                                        </Link>
+                                    </td>
+                                </tr>
+                            );
+                        })}
                     </tbody>
                 </table>
             </div>

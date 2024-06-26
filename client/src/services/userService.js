@@ -21,6 +21,6 @@ export const login = async (payload) => {
     }
 };
 
-export const logout = () => {
-    return request.get(`${BASE_URL}/logout`);
-};
+export const logout = () => request.get(`${BASE_URL}/logout`);
+
+export const me = () => request.get(`${BASE_URL}/me`);
