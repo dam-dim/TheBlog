@@ -1,60 +1,50 @@
-import { useState } from "react";
+import { useContext } from "react";
+
+import * as postService from "../../services/postService";
+
 import styles from "./Create.module.css";
+
 import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
-import { validator, isValid } from "../../utils/validator";
 import Textarea from "../form/textarea/Textarea";
-import * as postService from "../../services/postService";
+import useForm from "../../hooks/useForm";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
     title: "",
     category: "",
     imageUrl: "",
     content: "",
+    submit: "",
 };
 
 export default function Create() {
-    const [formValues, setFormValues] = useState(initialValues);
-    const [fieldErrors, setFieldErrors] = useState(initialValues);
+    const navigate = useNavigate();
 
-    const onClickSubmitHandler = async () => {
-        validate();
+    const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
+        onCreateSubmit,
+        initialValues
+    );
 
-        if (isValid.submit()) {
-            try {
-                const result = await postService.create(formValues);
-                console.log(result);
-            } catch (error) {
-                console.log(error);
-            }
-
-            setFormValues(initialValues);
-        } else {
-            //
+    async function onCreateSubmit(payload) {
+        try {
+            const data = {
+                title: payload.title,
+                category: payload.category,
+                imageUrl: payload.imageUrl,
+                content: payload.content,
+            };
+            await postService.create(data);
+            navigate("/");
+        } catch (error) {
+            throw error;
         }
-    };
-
-    const onChangeFieldHandler = (e) => {
-        setFormValues((state) => {
-            return { ...state, [e.target.name]: e.target.value };
-        });
-    };
-
-    const onBlur = () => validate();
-
-    const validate = () => {
-        for (const key in initialValues) {
-            const result = validator[key](formValues[key], formValues.password);
-            setFieldErrors((state) => {
-                return { ...state, [key]: result };
-            });
-        }
-    };
+    }
 
     return (
         <div className={styles.form}>
             <h1>Create</h1>
-            <form action="">
+            <form onSubmit={onSubmit}>
                 <div className={styles.header}>
                     <Input
                         placeholder="Post Title"
@@ -63,7 +53,7 @@ export default function Create() {
                         id="title"
                         title="Title"
                         value={formValues.title}
-                        onChange={onChangeFieldHandler}
+                        onChange={onChange}
                         onBlur={onBlur}
                         error={fieldErrors.title}
                     />
@@ -74,7 +64,7 @@ export default function Create() {
                         id="category"
                         title="Category"
                         value={formValues.category}
-                        onChange={onChangeFieldHandler}
+                        onChange={onChange}
                         onBlur={onBlur}
                         error={fieldErrors.category}
                     />
@@ -87,7 +77,7 @@ export default function Create() {
                     id="imageUrl"
                     title="Image URL"
                     value={formValues.imageUrl}
-                    onChange={onChangeFieldHandler}
+                    onChange={onChange}
                     onBlur={onBlur}
                     error={fieldErrors.imageUrl}
                 />
@@ -98,7 +88,7 @@ export default function Create() {
                     id="content"
                     title="Content"
                     value={formValues.content}
-                    onChange={onChangeFieldHandler}
+                    onChange={onChange}
                     onBlur={onBlur}
                     error={fieldErrors.content}
                 />
@@ -107,15 +97,8 @@ export default function Create() {
                     class={styles.submit}
                     buttonText="Create"
                     error={fieldErrors.submit}
-                    onClick={onClickSubmitHandler}
                 />
             </form>
-            {/* <div className={styles.link}>
-                <p>
-                    If You don't have have an account, You can register{" "}
-                    <Link to="/register">here.</Link>
-                </p>
-            </div> */}
         </div>
     );
 }

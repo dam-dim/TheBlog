@@ -7,17 +7,15 @@ import * as userService from "./services/userService";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
-import MyError from "./components/myError/MyError";
-import { useState } from "react";
 
 const INIT_VALUES = {
-    username: "",
-    email: "",
-    token: "",
+    // username: "",
+    // email: "",
+    // token: "",
 };
 
 function App() {
-    const { auth, setCurrentUser, removeCurrentUser } =
+    const { currentUser, setCurrentUser, removeCurrentUser } =
         usePersistedState(INIT_VALUES);
     const navigate = useNavigate();
 
@@ -50,21 +48,12 @@ function App() {
         }
     };
 
-    const logoutHandler = async () => {
-        try {
-            await userService.logout();
-            removeCurrentUser();
-            navigate("/");
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    };
-
     const values = {
-        auth,
+        currentUser,
         loginHandler,
         registerHandler,
-        logoutHandler,
+        setCurrentUser,
+        removeCurrentUser,
     };
 
     return (

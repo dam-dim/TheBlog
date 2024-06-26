@@ -16,13 +16,13 @@ import { useContext } from "react";
 import AuthContext from "../../contexts/authContext";
 
 export default function Main() {
-    const { auth } = useContext(AuthContext);
+    const { currentUser } = useContext(AuthContext);
     return (
         <div className={styles.main}>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/posts/:postId/details" element={<Details />} />
-                {auth.token !== "" ? (
+                {currentUser.token ? (
                     <>
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/create" element={<Create />} />

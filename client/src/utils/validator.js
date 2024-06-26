@@ -92,8 +92,7 @@ const validateImageUrl = (...props) => {
 const validateContent = (...props) => {
     const content = props[0].trim();
 
-    if (content === "")
-        return (errors.catcontentegory = "Content is required!");
+    if (content === "") return (errors.content = "Content is required!");
 
     if (content.length < 5)
         return (errors.content =
@@ -134,11 +133,3 @@ export const isValid = {
     imageUrl: () => errors.imageUrl === "",
     content: () => errors.content === "",
 };
-
-// export const validateOne = (field, ...props) => {
-//     validator[field](props);
-// };
-
-// export const validateAll = () => {
-//     //
-// };

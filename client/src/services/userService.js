@@ -21,10 +21,6 @@ export const login = async (payload) => {
 };
 
 export const logout = async () => {
-    try {
-        const result = await request.get(`${BASE_URL}/logout`);
-        return result;
-    } catch (error) {
-        throw new Error(error.message);
-    }
+    const result = await request.get(`${BASE_URL}/logout`);
+    return result;
 };

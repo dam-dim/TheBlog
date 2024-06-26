@@ -19,11 +19,11 @@ export default function usePersistedState(initialValue) {
     };
 
     const removeCurrentUser = () => {
-        setAuth(initialValue);
+        setAuth({});
         localStorage.removeItem("token");
         localStorage.removeItem("username");
         localStorage.removeItem("email");
     };
 
-    return { auth, setCurrentUser, removeCurrentUser };
+    return { currentUser: auth, setCurrentUser, removeCurrentUser };
 }

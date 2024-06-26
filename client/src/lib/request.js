@@ -1,19 +1,15 @@
 const request = async (url, method, data) => {
-    try {
-        const response = await fetch(url, { ...getOptions(data), method });
+    const response = await fetch(url, { ...getOptions(data), method });
 
-        if (response.status === 204) return {};
+    if (response.status === 204) return {};
 
-        const result = await response.json();
+    const result = await response.json();
 
-        if (!response.ok) {
-            throw result;
-        }
-
-        return result;
-    } catch (error) {
-        throw error;
+    if (!response.ok) {
+        throw result;
     }
+
+    return result;
 };
 
 const getOptions = (data) => {
