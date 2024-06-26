@@ -26,9 +26,9 @@ export default function Main() {
                     <>
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/create" element={<Create />} />
-                        <Route path="/edit" element={<Edit />} />
                         <Route path="/fill" element={<Fill />} />
                         <Route path="/logout" element={<Logout />} />
+                        <Route path="/posts/:postId/edit" element={<Edit />} />
                     </>
                 ) : (
                     <>

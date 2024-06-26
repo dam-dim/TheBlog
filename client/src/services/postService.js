@@ -59,6 +59,20 @@ export const getByAuthorId = async (authorId) => {
     }
 };
 
+export const edit = async (payload) => {
+    payload = {
+        ...payload,
+        owner: localStorage.getItem("username"),
+    };
+
+    try {
+        const result = await request.put(BASE_URL, payload);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
+
 /**
  * Fills the DB with dummy posts
  * @returns Promise to be resolved or rejected with an error

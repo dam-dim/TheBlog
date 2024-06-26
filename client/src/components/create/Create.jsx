@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import * as postService from "../../services/postService";
 
@@ -8,7 +9,6 @@ import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
 import Textarea from "../form/textarea/Textarea";
 import useForm from "../../hooks/useForm";
-import { useNavigate } from "react-router-dom";
 
 const initialValues = {
     title: "",
