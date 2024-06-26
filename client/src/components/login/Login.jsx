@@ -21,10 +21,6 @@ export default function Login() {
     const { formValues, fieldErrors, fetchError, onChange, onBlur, onSubmit } =
         useForm(loginHandler, initialValues);
 
-    useEffect(() => {
-        fireError([fetchError]);
-    }, [fetchError]);
-
     return (
         <>
             <div className={styles.form}>

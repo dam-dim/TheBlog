@@ -19,22 +19,14 @@ const INIT_VALUES = {
 function App() {
     const { auth, setCurrentUser, removeCurrentUser } =
         usePersistedState(INIT_VALUES);
-    const [myErrors, setMyErrors] = useState([]);
     const navigate = useNavigate();
-
-    const fireError = (messages) => {
-        setMyErrors(messages);
-        setTimeout(() => {
-            setMyErrors([]);
-        }, 2000);
-    };
 
     const loginHandler = async (payload) => {
         try {
-            const result = await userService.login(
-                payload.email,
-                payload.password
-            );
+            const result = await userService.login({
+                email: payload.email,
+                password: payload.password,
+            });
 
             setCurrentUser(result.username, result.email, result.accessToken);
             navigate("/");
@@ -68,13 +60,11 @@ function App() {
         loginHandler,
         registerHandler,
         logoutHandler,
-        fireError,
     };
 
     return (
         <>
             <AuthContext.Provider value={values}>
-                {myErrors.length > 0 && <MyError messages={myErrors} />}
                 <Header />
                 <Main />
             </AuthContext.Provider>

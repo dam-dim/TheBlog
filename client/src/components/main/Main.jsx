@@ -36,7 +36,6 @@ export default function Main() {
                         <Route path="/register" element={<Register />} />
                     </>
                 )}
-
                 <Route path="*" element={<PathError />} />
             </Routes>
         </div>

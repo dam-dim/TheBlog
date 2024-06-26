@@ -27,16 +27,16 @@ export default function useForm(submitHandler, initialValues) {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        setFetchError("");
-
         validate();
 
         if (errors.submit === "") {
             try {
                 await submitHandler(formValues);
+                setFetchError("");
                 setFormValues(initialValues);
             } catch (error) {
                 setFetchError(error.message);
+                console.log(error.message);
                 setFormValues((state) => {
                     return { ...state, password: "", repPass: "" };
                 });

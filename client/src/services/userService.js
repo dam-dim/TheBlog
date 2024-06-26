@@ -1,3 +1,5 @@
+import * as request from "../utils/request";
+
 const BASE_URL = "http://localhost:3030/users";
 
 /**
@@ -6,18 +8,7 @@ const BASE_URL = "http://localhost:3030/users";
  */
 export const register = async (payload) => {
     try {
-        const response = await fetch(`${BASE_URL}/register`, {
-            method: "POST",
-            "Content-Type": "application/json",
-            body: JSON.stringify(payload),
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-            throw new Error(result.message);
-        }
-
+        const result = request.post(`${BASE_URL}/register`, payload);
         return result;
     } catch (error) {
         throw new Error(error.message);
@@ -25,27 +16,13 @@ export const register = async (payload) => {
 };
 
 /**
- *
  * @param {*} email
  * @param {*} password
  * @returns
  */
-export const login = async (email, password) => {
+export const login = async (payload) => {
     try {
-        const response = await fetch(`${BASE_URL}/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-            throw new Error(result.message);
-        }
-
+        const result = await request.post(`${BASE_URL}/login`, payload);
         return result;
     } catch (error) {
         throw new Error(error.message);
