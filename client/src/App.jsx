@@ -50,9 +50,14 @@ function App() {
         }
     };
 
-    const logoutHandler = () => {
-        removeCurrentUser();
-        navigate("/");
+    const logoutHandler = async () => {
+        try {
+            await userService.logout();
+            removeCurrentUser();
+            navigate("/");
+        } catch (error) {
+            throw new Error(error.message);
+        }
     };
 
     const values = {
