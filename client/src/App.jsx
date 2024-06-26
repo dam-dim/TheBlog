@@ -19,20 +19,6 @@ function App() {
         usePersistedState(INIT_VALUES);
     const navigate = useNavigate();
 
-    const loginHandler = async (payload) => {
-        try {
-            const result = await userService.login({
-                email: payload.email,
-                password: payload.password,
-            });
-
-            setCurrentUser(result.username, result.email, result.accessToken);
-            navigate("/");
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    };
-
     const registerHandler = async (payload) => {
         try {
             const data = {
@@ -50,7 +36,6 @@ function App() {
 
     const values = {
         currentUser,
-        loginHandler,
         registerHandler,
         setCurrentUser,
         removeCurrentUser,

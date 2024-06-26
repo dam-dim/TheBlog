@@ -10,10 +10,16 @@ export default function Logout() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        userService.logout().then(() => {
-            removeCurrentUser();
-            navigate("/");
-        });
+        userService
+            .logout()
+            .then(() => {
+                removeCurrentUser();
+                navigate("/");
+            })
+            .catch((err) => {
+                console.log(err);
+                navigate("/");
+            });
     }, []);
 
     return null;

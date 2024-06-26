@@ -1,8 +1,9 @@
-import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/authContext";
+import * as userService from "../../services/userService";
 
 import styles from "./Login.module.css";
 
@@ -16,10 +17,27 @@ const initialValues = {
 };
 
 export default function Login() {
-    const { loginHandler, fireError } = useContext(AuthContext);
+    const { setCurrentUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const { formValues, fieldErrors, fetchError, onChange, onBlur, onSubmit } =
-        useForm(loginHandler, initialValues);
+    const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
+        loginHandler,
+        initialValues
+    );
+
+    async function loginHandler(payload) {
+        try {
+            const result = await userService.login({
+                email: payload.email,
+                password: payload.password,
+            });
+
+            setCurrentUser(result.username, result.email, result.accessToken);
+            navigate("/");
+        } catch (error) {
+            throw error;
+        }
+    }
 
     return (
         <>

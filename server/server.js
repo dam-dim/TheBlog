@@ -1531,6 +1531,8 @@
     var seedData = {
         posts: {},
         users: {},
+        categories: {},
+        comments: {},
     };
     var rules$1 = {
         users: {

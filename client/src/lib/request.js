@@ -18,8 +18,6 @@ const getOptions = (data) => {
     if (data) {
         options.headers = { "Content-Type": "application/json" };
         options.body = JSON.stringify(data);
-    } else {
-        return options;
     }
 
     const token = localStorage.getItem("token");
