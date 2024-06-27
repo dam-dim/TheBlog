@@ -8,22 +8,28 @@ import Post from "./post/Post";
 import Pagination from "../../pagination/Pagination";
 
 export default function AllPosts() {
-    const postsPerPage = 5;
+    const postsPerPage = 3;
     const [currentPage, setCurrentPage] = useState(1);
+    const [allPostsCount, setAllPostsCount] = useState(0);
     const [posts, setPosts] = useState([]);
-
-    useEffect(() => {
-        postService
-            .getAll()
-            .then(setPosts)
-            .catch((err) => console.log(err));
-    }, []);
 
     const lastIndex = currentPage * postsPerPage;
     const startingIndex = lastIndex - postsPerPage;
-    let lastPage = Math.ceil(posts.length / postsPerPage);
+    let lastPage = Math.ceil(allPostsCount / postsPerPage);
 
-    const currentPosts = posts.slice(startingIndex, lastIndex);
+    useEffect(() => {
+        postService
+            .getPostsCount()
+            .then(setAllPostsCount)
+            .catch((err) => console.log(err));
+    }, []);
+
+    useEffect(() => {
+        postService
+            .getPaginatedPosts(startingIndex, postsPerPage)
+            .then(setPosts)
+            .catch((err) => console.log(err));
+    }, [currentPage]);
 
     const decreasePageNumber = () => {
         if (currentPage > 1) setCurrentPage((state) => state - 1);
@@ -40,7 +46,7 @@ export default function AllPosts() {
             <Filters />
 
             <div className={styles.allWrapper}>
-                {currentPosts.map((post) => {
+                {posts.map((post) => {
                     return <Post key={post._id} {...post} />;
                 })}
             </div>

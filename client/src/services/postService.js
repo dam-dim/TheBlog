@@ -36,6 +36,29 @@ export const getAll = async () => {
     }
 };
 
+export const getPostsCount = async () => {
+    try {
+        const result = await request.get(`${BASE_URL}?count`);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const getPaginatedPosts = async (skip, take) => {
+    const query = new URLSearchParams({
+        offset: skip,
+        pageSize: take,
+        load: `author=_ownerId:users`,
+    });
+    try {
+        const result = await request.get(`${BASE_URL}?${query}`);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
+
 /**
  *
  * @param postId Id of the post that needs to be fetched
