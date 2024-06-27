@@ -9,36 +9,35 @@ import styles from "./Edit.module.css";
 import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
 import Textarea from "../form/textarea/Textarea";
+import parseDate from "../../utils/dateParser";
 
 const INIT_VALUES = {
     title: "",
     category: "",
     imageUrl: "",
     content: "",
-    submit: "",
 };
 
 export default function Edit() {
-    const [post, setPost] = useState({});
+    const [post, setPost] = useState(INIT_VALUES);
     const { postId } = useParams();
     const navigate = useNavigate();
 
-    // TOOOOOOOOODOOOOOOOOOOOOOOO
+    const { formValues, fieldErrors, onChange, onBlur, onSubmit, onMount } =
+        useForm(onSubmitHandler, {
+            ...INIT_VALUES,
+            submit: "",
+        });
 
     useEffect(() => {
         postService
-            .getPostById(postId)
-            .then(setPost)
+            .getPostWithoutAuthot(postId)
+            .then((result) => {
+                setPost(result);
+                onMount(result);
+            })
             .catch((err) => console.log(err));
     }, [postId]);
-
-    const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
-        onSubmitHandler,
-        {
-            ...post,
-            submit: "",
-        }
-    );
 
     async function onSubmitHandler(payload) {
         try {
@@ -48,8 +47,8 @@ export default function Edit() {
                 imageUrl: payload.imageUrl,
                 content: payload.content,
             };
-            await postService.edit(data);
-            navigate(`posts/${post._id}/details`);
+            await postService.edit(postId, data);
+            navigate(`/posts/${postId}/details`);
         } catch (error) {
             throw error;
         }

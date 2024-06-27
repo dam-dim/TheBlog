@@ -55,6 +55,15 @@ export const getPostById = async (postId) => {
     }
 };
 
+export const getPostWithoutAuthot = async (postId) => {
+    try {
+        const result = await request.get(`${BASE_URL}/${postId}`);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
+
 export const getByAuthorId = async (authorId) => {
     const query = new URLSearchParams({
         where: `_ownerId="${authorId}"`,
@@ -84,14 +93,14 @@ export const getLatestPosts = async () => {
     }
 };
 
-export const edit = async (payload) => {
+export const edit = async (postId, payload) => {
     payload = {
         ...payload,
         owner: localStorage.getItem("username"),
     };
 
     try {
-        const result = await request.put(BASE_URL, payload);
+        const result = await request.patch(`${BASE_URL}/${postId}`, payload);
         return result;
     } catch (error) {
         throw error;

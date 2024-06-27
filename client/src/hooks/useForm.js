@@ -55,6 +55,10 @@ export default function useForm(submitHandler, initialValues) {
         }
     };
 
+    const onMount = (values) => {
+        setFormValues(values);
+    };
+
     return {
         formValues,
         fieldErrors,
@@ -62,5 +66,6 @@ export default function useForm(submitHandler, initialValues) {
         onChange,
         onBlur,
         onSubmit,
+        onMount,
     };
 }
