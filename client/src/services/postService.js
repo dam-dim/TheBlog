@@ -25,8 +25,11 @@ export const create = async (payload) => {
  * @returns An array with all the posts
  */
 export const getAll = async () => {
+    const query = new URLSearchParams({
+        load: `author=_ownerId:users`,
+    });
     try {
-        const result = await request.get(BASE_URL);
+        const result = await request.get(`${BASE_URL}?${query}`);
         return result;
     } catch (error) {
         throw error;

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import styles from "./Post.module.css";
+import parseDate from "../../../../utils/dateParser";
 
 export default function Post(props) {
     return (
@@ -13,8 +14,8 @@ export default function Post(props) {
                     <h4>{props.category}</h4>
                 </div>
                 <div>
-                    <p>@username</p>
-                    <p>{props.createdAt}</p>
+                    <p>@{props.author?.username}</p>
+                    <p>{parseDate(props._createdOn)}</p>
                 </div>
             </Link>
         </div>

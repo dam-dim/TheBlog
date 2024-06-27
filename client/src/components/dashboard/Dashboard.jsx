@@ -5,6 +5,7 @@ import styles from "./Dashboard.module.css";
 import AuthContext from "../../contexts/authContext";
 import * as userService from "../../services/userService";
 import * as postService from "../../services/postService";
+import parseDate from "../../utils/dateParser";
 
 export default function Dashboard() {
     const { currentUser } = useContext(AuthContext);
@@ -59,7 +60,7 @@ export default function Dashboard() {
                             return (
                                 <tr key={myPost._id}>
                                     <td>{myPost.title}</td>
-                                    <td>{myPost._createdOn}</td>
+                                    <td>{parseDate(myPost._createdOn)}</td>
                                     <td>17.06.24 11:58</td>
                                     <td>
                                         <Link
