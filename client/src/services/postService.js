@@ -53,10 +53,12 @@ export const getPostById = async (postId) => {
 };
 
 export const getByAuthorId = async (authorId) => {
+    const query = new URLSearchParams({
+        where: `_ownerId="${authorId}"`,
+    });
+
     try {
-        const result = await request.get(
-            `${BASE_URL}?where=_ownerId%3D"${authorId}"`
-        );
+        const result = await request.get(`${BASE_URL}?${query}`);
         return result;
     } catch (error) {
         throw error;
