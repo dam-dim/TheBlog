@@ -45,12 +45,23 @@ export const getPostsCount = async () => {
     }
 };
 
-export const getPaginatedPosts = async (skip, take) => {
-    const query = new URLSearchParams({
-        offset: skip,
-        pageSize: take,
-        load: `author=_ownerId:users`,
-    });
+export const getPaginatedPosts = async (skip, take, filters) => {
+    let query = new URLSearchParams();
+
+    if (filters.search) query.append("where", `title LIKE "${filters.search}"`);
+    if (filters.category)
+        query.append("where", `category LIKE "${filters.category}"`);
+    if (filters.titleSort === "desc") query.append("sortBy", "title desc");
+    if (filters.dateSort === "desc") query.append("sortBy", "_createdOn desc");
+
+    query.append("offset", skip);
+    query.append("pageSize", take);
+    query.append("load", "author=_ownerId:users");
+
+    query = replaceAll(query.toString(), "+", "%20");
+
+    console.log(query);
+
     try {
         const result = await request.get(`${BASE_URL}?${query}`);
         return result;
@@ -58,6 +69,14 @@ export const getPaginatedPosts = async (skip, take) => {
         throw error;
     }
 };
+
+function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+}
+
+function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(escapeRegExp(find), "g"), replace);
+}
 
 /**
  *

@@ -5,19 +5,27 @@ import styles from "./AllPosts.module.css";
 import Filters from "./filters/Filters";
 import Post from "./post/Post";
 import Pagination from "../../pagination/Pagination";
+import useFilters from "../../../hooks/useFilters";
+import { useEffect } from "react";
 
 const START_PAGE = 1;
-const POSTS_PER_PAGE = 3;
+const POSTS_PER_PAGE = 10;
 
 export default function AllPosts() {
-    const { currentPage, posts, decreasePageNumber, increasePageNumber } =
-        usePagination(START_PAGE, POSTS_PER_PAGE);
+    const {
+        currentPage,
+        posts,
+        filters,
+        onChangeFilter,
+        decreasePageNumber,
+        increasePageNumber,
+    } = usePagination(START_PAGE, POSTS_PER_PAGE);
 
     return (
         <div className={styles.allPosts}>
             <h1>All Posts</h1>
 
-            <Filters />
+            <Filters filters={filters} onChange={onChangeFilter} />
 
             <div className={styles.allWrapper}>
                 {posts.map((post) => {

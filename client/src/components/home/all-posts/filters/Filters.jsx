@@ -1,12 +1,17 @@
 import styles from "./Filters.module.css";
 
-export default function Filters() {
+export default function Filters({ filters, onChange }) {
     return (
         <div className={styles.filters}>
             <div className={styles.categoryFilter}>
                 <label htmlFor="category">Category</label>
-                <select defaultValue="all" name="category" id="category">
-                    <option value="all">All</option>
+                <select
+                    defaultValue="all"
+                    name="category"
+                    id="category"
+                    onChange={onChange}
+                >
+                    <option value="">All</option>
                     <option value="cars">Cars</option>
                     <option value="movies">Movies</option>
                     <option value="philosophy">Philosophy</option>
@@ -16,7 +21,12 @@ export default function Filters() {
 
             <div className={styles.search}>
                 <label htmlFor="search">Search</label>
-                <input type="search" />
+                <input
+                    type="search"
+                    name="search"
+                    id="search"
+                    onChange={onChange}
+                />
             </div>
 
             <div className={styles.sort}>
@@ -24,19 +34,19 @@ export default function Filters() {
 
                 <div className={styles.titleSort}>
                     <label htmlFor="titleSort">Title</label>
-                    <select name="titleSort" id="">
+                    <select name="titleSort" id="titleSort" onChange={onChange}>
                         <option value=""></option>
-                        <option value="ascending">Ascending</option>
-                        <option value="descending">Descending</option>
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
                     </select>
                 </div>
 
                 <div className={styles.dateSort}>
                     <label htmlFor="dateSort">Date</label>
-                    <select name="dateSort" id="">
+                    <select name="dateSort" id="dateSort" onChange={onChange}>
                         <option value=""></option>
-                        <option value="ascending">Newest</option>
-                        <option value="descending">Oldest</option>
+                        <option value="asc">Newest</option>
+                        <option value="desc">Oldest</option>
                     </select>
                 </div>
             </div>
