@@ -19,8 +19,8 @@ export default function TableListItem(props) {
             <td>{props.title}</td>
             <td>{parseDate(props._createdOn)}</td>
             <td>
-                {props.editedAt
-                    ? parseDate(props.editedAt)
+                {props._updatedOn
+                    ? parseDate(props._updatedOn)
                     : "Not yet edited  "}
             </td>
             <td>

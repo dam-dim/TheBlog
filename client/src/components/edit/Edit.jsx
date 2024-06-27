@@ -47,7 +47,6 @@ export default function Edit() {
                 category: payload.category,
                 imageUrl: payload.imageUrl,
                 content: payload.content,
-                editedAt: Date.now(),
             };
             await postService.edit(postId, data);
             navigate(`/posts/${postId}/details`);

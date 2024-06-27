@@ -29,8 +29,8 @@ export default function Details() {
                     <div className={styles.creatorDetails}>
                         <p>@{post.author?.username}</p>
                         <p>Posted on {parseDate(post._createdOn)}</p>
-                        {post.editedAt && (
-                            <p>Updated on {parseDate(post.editedAt)}</p>
+                        {post._updatedOn && (
+                            <p>Updated on {parseDate(post._updatedOn)}</p>
                         )}
                     </div>
                 </div>
