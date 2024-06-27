@@ -6,9 +6,9 @@ import AuthContext from "../../contexts/authContext";
 import * as userService from "../../services/userService";
 import * as postService from "../../services/postService";
 import parseDate from "../../utils/dateParser";
+import TableListItem from "./table-list-item/TableListItem";
 
 export default function Dashboard() {
-    const { currentUser } = useContext(AuthContext);
     const [myPosts, setMyPosts] = useState([]);
 
     useEffect(() => {
@@ -22,6 +22,15 @@ export default function Dashboard() {
             })
             .catch((err) => console.log(err));
     }, []);
+
+    const deletePost = async (postId) => {
+        try {
+            await postService.remove(postId);
+            setMyPosts((state) => state.filter((post) => post._id !== postId));
+        } catch (error) {
+            throw error;
+        }
+    };
 
     return (
         <div className={styles.dashboard}>
@@ -56,39 +65,13 @@ export default function Dashboard() {
                         </tbody>
                     )}
                     <tbody>
-                        {myPosts.map((myPost) => {
-                            return (
-                                <tr key={myPost._id}>
-                                    <td>{myPost.title}</td>
-                                    <td>{parseDate(myPost._createdOn)}</td>
-                                    <td>17.06.24 11:58</td>
-                                    <td>
-                                        <Link
-                                            className={styles.details}
-                                            to={`/posts/${myPost._id}/details`}
-                                        >
-                                            Details
-                                        </Link>
-                                    </td>
-                                    <td>
-                                        <Link
-                                            className={styles.edit}
-                                            to={`/posts/${myPost._id}/edit`}
-                                        >
-                                            Edit
-                                        </Link>
-                                    </td>
-                                    <td>
-                                        <Link
-                                            className={styles.delete}
-                                            to={`/posts/${myPost._id}/delete`}
-                                        >
-                                            Delete
-                                        </Link>
-                                    </td>
-                                </tr>
-                            );
-                        })}
+                        {myPosts.map((myPost) => (
+                            <TableListItem
+                                key={myPost._id}
+                                {...myPost}
+                                deletePost={deletePost}
+                            />
+                        ))}
                     </tbody>
                 </table>
             </div>

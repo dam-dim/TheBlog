@@ -59,18 +59,6 @@
     background-color: #D3D9D4;
 }
 
-.edit {
-    background-color: rgb(121, 121, 185);
-}
-
-.delete {
-    background-color: rgb(168, 76, 76);
-}
-
-.details {
-    background-color: rgb(81, 150, 81);
-}
-
 .myPosts a {
     color: #212A31;
     text-decoration: none;
