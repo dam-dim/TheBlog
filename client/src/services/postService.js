@@ -68,6 +68,22 @@ export const getByAuthorId = async (authorId) => {
     }
 };
 
+export const getLatestPosts = async () => {
+    const query = new URLSearchParams({
+        offset: "0",
+        pageSize: "3",
+        load: "author=_ownerId:users",
+    });
+    try {
+        const result = await request.get(
+            `${BASE_URL}?sortBy=_createdOn desc&${query}`
+        );
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
+
 export const edit = async (payload) => {
     payload = {
         ...payload,

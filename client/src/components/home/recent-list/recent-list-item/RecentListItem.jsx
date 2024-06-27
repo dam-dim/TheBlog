@@ -1,22 +1,20 @@
 import { Link } from "react-router-dom";
 import styles from "./RecentListItem.module.css";
+import parseDate from "../../../../utils/dateParser";
 
-export default function RecentListItem() {
+export default function RecentListItem(props) {
     return (
         <div className={styles.card}>
-            <img
-                src="https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2022/06/How_To_Start_A_Blog_-_article_image.jpg"
-                alt=""
-            />
+            <img src={props?.imageUrl} alt="" />
             <div className={styles.cardDetails}>
-                <h3>Post Title</h3>
-                <p>Post Category</p>
+                <h3>{props.title}</h3>
+                <p>{props.category}</p>
 
                 <div className={styles.creator}>
-                    <p>@username</p>
-                    <p>16.06.24 14:20</p>
+                    <p>@{props.author?.username}</p>
+                    <p>{parseDate(props._createdOn)}</p>
                 </div>
-                <Link to="/details">Read more</Link>
+                <Link to={`/posts/${props._id}/details`}>Read more</Link>
             </div>
         </div>
     );
