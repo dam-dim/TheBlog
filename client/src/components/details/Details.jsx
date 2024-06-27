@@ -14,8 +14,6 @@ export default function Details() {
             .getPostById(postId)
             .then(setPost)
             .catch((err) => console.log(err));
-
-        window.scrollTo(0, 0);
     }, [postId]);
 
     return (
@@ -28,7 +26,7 @@ export default function Details() {
                         alt=""
                     />
                     <div className={styles.creatorDetails}>
-                        <p>@{post.owner}</p>
+                        <p>@{post.author?.username}</p>
                         <p>Posted on {post._createdOn}</p>
                         {post.editedAt && <p>Updated on {post.editedAt}</p>}
                     </div>

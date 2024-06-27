@@ -25,7 +25,6 @@ export default function useForm(submitHandler, initialValues) {
 
     const validate = () => {
         for (const key in initialValues) {
-            console.log(formValues[key]);
             const result = validator[key](
                 formValues[key],
                 formValues?.password

@@ -11,7 +11,6 @@ const BASE_URL = "http://localhost:3030/data/posts";
 export const create = async (payload) => {
     payload = {
         ...payload,
-        owner: localStorage.getItem("username"),
     };
 
     try {
@@ -40,9 +39,14 @@ export const getAll = async () => {
  * @returns An object representing the post
  */
 export const getPostById = async (postId) => {
+    const query = new URLSearchParams({
+        where: `_id="${postId}"`,
+        load: `author=_ownerId:users`,
+    });
+
     try {
-        const result = await request.get(`${BASE_URL}/${postId}`);
-        return result;
+        const result = await request.get(`${BASE_URL}?${query}`);
+        return result[0];
     } catch (error) {
         throw error;
     }
