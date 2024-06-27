@@ -94,13 +94,8 @@ export const getLatestPosts = async () => {
 };
 
 export const edit = async (postId, payload) => {
-    payload = {
-        ...payload,
-        owner: localStorage.getItem("username"),
-    };
-
     try {
-        const result = await request.patch(`${BASE_URL}/${postId}`, payload);
+        const result = await request.put(`${BASE_URL}/${postId}`, payload);
         return result;
     } catch (error) {
         throw error;

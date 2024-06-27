@@ -18,7 +18,11 @@ export default function TableListItem(props) {
         <tr key={props._id}>
             <td>{props.title}</td>
             <td>{parseDate(props._createdOn)}</td>
-            <td>{props.editedAt ? props.editedAt : "Not yet edited  "}</td>
+            <td>
+                {props.editedAt
+                    ? parseDate(props.editedAt)
+                    : "Not yet edited  "}
+            </td>
             <td>
                 <Link
                     className={styles.details}
