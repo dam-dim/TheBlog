@@ -1,43 +1,17 @@
-import { useEffect, useState } from "react";
+import usePagination from "../../../hooks/usePagination";
 
 import styles from "./AllPosts.module.css";
-import * as postService from "../../../services/postService";
 
 import Filters from "./filters/Filters";
 import Post from "./post/Post";
 import Pagination from "../../pagination/Pagination";
 
+const START_PAGE = 1;
+const POSTS_PER_PAGE = 3;
+
 export default function AllPosts() {
-    const postsPerPage = 3;
-    const [currentPage, setCurrentPage] = useState(1);
-    const [allPostsCount, setAllPostsCount] = useState(0);
-    const [posts, setPosts] = useState([]);
-
-    const lastIndex = currentPage * postsPerPage;
-    const startingIndex = lastIndex - postsPerPage;
-    let lastPage = Math.ceil(allPostsCount / postsPerPage);
-
-    useEffect(() => {
-        postService
-            .getPostsCount()
-            .then(setAllPostsCount)
-            .catch((err) => console.log(err));
-    }, []);
-
-    useEffect(() => {
-        postService
-            .getPaginatedPosts(startingIndex, postsPerPage)
-            .then(setPosts)
-            .catch((err) => console.log(err));
-    }, [currentPage]);
-
-    const decreasePageNumber = () => {
-        if (currentPage > 1) setCurrentPage((state) => state - 1);
-    };
-
-    const increasePageNumber = () => {
-        if (currentPage < lastPage) setCurrentPage((state) => state + 1);
-    };
+    const { currentPage, posts, decreasePageNumber, increasePageNumber } =
+        usePagination(START_PAGE, POSTS_PER_PAGE);
 
     return (
         <div className={styles.allPosts}>

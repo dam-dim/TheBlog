@@ -100,10 +100,10 @@ export const getByAuthorId = async (authorId) => {
     }
 };
 
-export const getLatestPosts = async () => {
+export const getLatestPosts = async (count) => {
     const query = new URLSearchParams({
         offset: "0",
-        pageSize: "3",
+        pageSize: count,
         load: "author=_ownerId:users",
     });
     try {
