@@ -39,8 +39,8 @@ export default function Details() {
                 <h3>{post.category}</h3>
                 <p className={styles.description}>{post.content}</p>
             </div>
-            {/* <Devider /> */}
-            {/* <Comments /> */}
+            <Devider />
+            <Comments />
         </div>
     );
 }
