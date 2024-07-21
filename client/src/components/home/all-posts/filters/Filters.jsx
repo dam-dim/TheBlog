@@ -12,10 +12,11 @@ export default function Filters({ filters, onChange }) {
                     onChange={onChange}
                 >
                     <option value="">All</option>
-                    <option value="cars">Cars</option>
-                    <option value="movies">Movies</option>
-                    <option value="philosophy">Philosophy</option>
-                    <option value="webDev">Web Dev</option>
+                    <option value="Pop Culture">Pop Culture</option>
+                    <option value="DIY Projects">DIY Projects</option>
+                    <option value="Health & Wellness">Health & Wellness</option>
+                    <option value="Tech Trends">Tech Trends</option>
+                    <option value="Travel Diaries">Travel Diaries</option>
                 </select>
             </div>
 
