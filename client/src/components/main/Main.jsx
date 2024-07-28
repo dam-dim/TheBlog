@@ -37,10 +37,10 @@ export default function Main() {
                         <Route path="/fill" element={<Fill />} />
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/posts/:postId/edit" element={<Edit />} />
-                        <Route
+                        {/* <Route
                             path="/posts/:postId/delete"
                             element={<Delete />}
-                        />
+                        /> */}
                     </>
                 ) : (
                     <>
