@@ -14,11 +14,17 @@ export default function Select(props) {
                 onBlur={props.onBlur}
             >
                 <option value=""></option>
-                {props.values.map((value) => (
-                    <option key={value._id} value={value.name}>
-                        {value.name}
-                    </option>
-                ))}
+                {props.values.map((value) =>
+                    props.selected === value._id ? (
+                        <option key={value._id} value={value._id} selected>
+                            {value.name}
+                        </option>
+                    ) : (
+                        <option key={value._id} value={value._id}>
+                            {value.name}
+                        </option>
+                    )
+                )}
             </select>
             <p>{props.error}</p>
         </div>
