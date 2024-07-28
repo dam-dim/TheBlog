@@ -168,7 +168,7 @@ export const fill = async () => {
                 imageUrl: `https://picsum.photos/1920/1080?random=${dummyPosts.indexOf(
                     dummyPost
                 )}`,
-                category: categories.getRandom(),
+                category: await categories.getRandom(),
             });
         } catch (error) {
             throw error;

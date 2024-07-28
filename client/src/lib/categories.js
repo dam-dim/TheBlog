@@ -1,22 +1,7 @@
-const categories = [
-    "Travel Diaries",
-    "Tech Trends",
-    "Health & Wellness",
-    "DIY Projects",
-    "Pop Culture",
-    "Fashion & Beauty",
-    "Books & Literature",
-    "Sports & Fitness",
-    "Environment & Sustainability",
-    "Food & Drink",
-    "Education & Learning",
-    "Finance & Investments",
-    "Pets & Animals",
-    "Home & Garden",
-    "Science & Discovery",
-];
+import * as categoryService from "../services/categoryService";
 
-export const getRandom = () => {
+export const getRandom = async () => {
+    const categories = await categoryService.getAll();
     const random = Math.floor(Math.random() * categories.length);
-    return categories[random];
+    return categories[random]._id;
 };
