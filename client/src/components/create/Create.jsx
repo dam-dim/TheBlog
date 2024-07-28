@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as postService from "../../services/postService";
+import * as categoryService from "../../services/categoryService";
 
 import styles from "./Create.module.css";
 
@@ -9,17 +10,27 @@ import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
 import Textarea from "../form/textarea/Textarea";
 import useForm from "../../hooks/useForm";
+import Select from "../form/select/Select";
 
 const initialValues = {
     title: "",
     category: "",
     imageUrl: "",
     content: "",
+    category: "",
     submit: "",
 };
 
 export default function Create() {
     const navigate = useNavigate();
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        categoryService
+            .getAll()
+            .then(setCategories)
+            .catch((err) => console.log(err));
+    }, []);
 
     const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
         onCreateSubmit,
@@ -69,6 +80,17 @@ export default function Create() {
                         error={fieldErrors.category}
                     />
                 </div>
+
+                <Select
+                    title="Category"
+                    id="category"
+                    placeholder="Post Category"
+                    class={styles.select}
+                    values={categories}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    error={fieldErrors.category}
+                />
 
                 <Input
                     placeholder="Post the image link here..."
