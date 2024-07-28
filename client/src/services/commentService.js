@@ -30,8 +30,12 @@ export const getAll = async () => {
 };
 
 export const getCommentsByPostId = async (postId) => {
+    const query = new URLSearchParams({
+        where: `postId="${postId}"`,
+    });
+
     try {
-        const result = await request.get(`${BASE_URL}?postId=${postId}`);
+        const result = await request.get(`${BASE_URL}?${query}`);
 
         return result;
     } catch (error) {
