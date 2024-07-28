@@ -1,18 +1,33 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+import * as categoryService from "../../services/categoryService";
+import * as postService from "../../services/postService";
+
+import parseDate from "../../utils/dateParser";
+
+import styles from "./Details.module.css";
+
 import Comments from "../comments/Comments";
 import Devider from "../devider/Devider";
-import styles from "./Details.module.css";
-import { useEffect, useState } from "react";
-import * as postService from "../../services/postService";
-import parseDate from "../../utils/dateParser";
 
 export default function Details() {
     const [post, setPost] = useState({});
     const { postId } = useParams();
+    const [category, setCategory] = useState("");
 
     useEffect(() => {
+        const setCategoryAsync = async (postObj) => {
+            const result = await categoryService.getCategoryById(
+                postObj.category
+            );
+            setCategory(result[0]);
+            return postObj;
+        };
+
         postService
             .getPostById(postId)
+            .then(setCategoryAsync)
             .then(setPost)
             .catch((err) => console.log(err));
     }, [postId]);
@@ -36,7 +51,7 @@ export default function Details() {
                 </div>
 
                 <h1>{post.title}</h1>
-                <h3>{post.category}</h3>
+                <h3>{category.name}</h3>
                 <p className={styles.description}>{post.content}</p>
             </div>
             <Devider />
