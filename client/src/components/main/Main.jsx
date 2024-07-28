@@ -16,6 +16,7 @@ import { useContext } from "react";
 import AuthContext from "../../contexts/authContext";
 import Delete from "../delete/Delete";
 import CategoryView from "../category-view/CategoryView";
+import AllPosts from "../all-posts/AllPosts";
 
 export default function Main() {
     const { currentUser } = useContext(AuthContext);
@@ -28,6 +29,7 @@ export default function Main() {
                     path="/categories/:categoryId"
                     element={<CategoryView />}
                 />
+                <Route path="/all-posts" element={<AllPosts />} />
                 {currentUser.token ? (
                     <>
                         <Route path="/dashboard" element={<Dashboard />} />
