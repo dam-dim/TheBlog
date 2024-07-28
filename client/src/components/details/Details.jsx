@@ -40,7 +40,7 @@ export default function Details() {
                 <p className={styles.description}>{post.content}</p>
             </div>
             <Devider />
-            <Comments />
+            <Comments post={post} />
         </div>
     );
 }
