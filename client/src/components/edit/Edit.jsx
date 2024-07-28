@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import * as postService from "../../services/postService";
+import * as categoryService from "../../services/categoryService";
+
 import useForm from "../../hooks/useForm";
 
 import styles from "./Edit.module.css";
@@ -10,6 +12,7 @@ import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
 import Textarea from "../form/textarea/Textarea";
 import parseDate from "../../utils/dateParser";
+import Select from "../form/select/Select";
 
 const INIT_VALUES = {
     title: "",
@@ -22,6 +25,14 @@ export default function Edit() {
     const [post, setPost] = useState(INIT_VALUES);
     const { postId } = useParams();
     const navigate = useNavigate();
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        categoryService
+            .getAll()
+            .then(setCategories)
+            .catch((err) => console.log(err));
+    }, []);
 
     const { formValues, fieldErrors, onChange, onBlur, onSubmit, onMount } =
         useForm(onSubmitHandler, {
@@ -73,16 +84,16 @@ export default function Edit() {
                             error={fieldErrors.title}
                         />
 
-                        <Input
+                        <Select
+                            title="Category"
+                            id="category"
                             placeholder="Post Category"
                             class={styles.input}
-                            type="text"
-                            id="category"
-                            title="Category"
-                            value={formValues.category}
+                            values={categories}
                             onChange={onChange}
                             onBlur={onBlur}
                             error={fieldErrors.category}
+                            selected={formValues.category}
                         />
                     </div>
 
