@@ -6,14 +6,16 @@ export default function Delete() {
     const { postId } = useParams();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        postService
-            .remove(postId)
-            .then((result) => {
-                navigate("/dashboard");
-            })
-            .catch((err) => console.log(err));
-    }, []);
+    // useEffect(() => {
+    //     postService
+    //         .remove(postId)
+    //         .then((result) => {
+    //             navigate("/dashboard");
+    //         })
+    //         .catch((err) => console.log(err));
+    // }, []);
 
-    return null;
+    alert("Are you sure");
+
+    return alert("Are you sure?");
 }
