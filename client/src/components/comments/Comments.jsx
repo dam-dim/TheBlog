@@ -34,8 +34,9 @@ export default function Comments({ post }) {
         e.preventDefault();
 
         const payload = {
-            content: "asdsadsa",
+            content: comment,
             postId: post._id,
+            username: currentUser.username,
         };
 
         const newComment = await commentService.create(payload);
@@ -55,6 +56,7 @@ export default function Comments({ post }) {
                             ownerId={comment._ownerId}
                             content={comment.content}
                             createdOn={comment._createdOn}
+                            username={comment.username}
                         />
                     ))
                 ) : (
