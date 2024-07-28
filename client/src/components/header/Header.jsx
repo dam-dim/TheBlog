@@ -21,6 +21,10 @@ export default function Header() {
                         <Link to="/">Home</Link>
                     </li>
 
+                    <li>
+                        <Link to="/all-posts">All Posts</Link>
+                    </li>
+
                     {currentUser.username ? (
                         <>
                             <li>
