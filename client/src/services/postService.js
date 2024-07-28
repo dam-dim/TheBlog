@@ -175,3 +175,17 @@ export const fill = async () => {
         }
     }
 };
+
+export const getPostsByCategoryId = async (categoryId) => {
+    const query = new URLSearchParams({
+        where: `category="${categoryId}"`,
+        load: "author=_ownerId:users",
+    });
+
+    try {
+        const result = await request.get(`${BASE_URL}?${query}`);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
