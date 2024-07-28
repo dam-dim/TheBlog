@@ -5,7 +5,7 @@ const getPosts = require("./posts/getPosts");
 function loadData() {
     const output = {
         posts: getPosts(),
-        // categories: getCategories(),
+        categories: getCategories(),
         comments: getComments(),
     };
 
