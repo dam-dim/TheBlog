@@ -8,6 +8,7 @@ import styles from "./TableListItem.module.css";
 export default function TableListItem(props) {
     const onClickDelete = async () => {
         try {
+            // alert("Are you sure?");
             await props.deletePost(props._id);
         } catch (error) {
             console.log(error);
