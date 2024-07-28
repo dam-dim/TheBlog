@@ -1,4 +1,3 @@
-import AllPosts from "./all-posts/AllPosts";
 import Recent from "./recent-list/Recent";
 import styles from "./Home.module.css";
 import Categories from "./categories/Categories";
@@ -14,7 +13,6 @@ export default function Home() {
             </div>
             <Recent />
             <Categories />
-            <AllPosts />
         </div>
     );
 }
