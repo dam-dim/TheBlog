@@ -1,0 +1,38 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.filters input {
+    padding: 5px;
+    border: 1px solid #212A31;
+    border-radius: 5px;
+}
+
+.filters select {
+    padding: 5px;
+    border: 1px solid #212A31;
+    border-radius: 5px;
+}
+
+.filters label {
+    margin: 0 10px 0 0;
+}
+
+.search input {
+    width: 250px;
+}
+
+.sort {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sort p {
+    margin-right: 20px;
+}
+
+.dateSort {
+    padding-left: 20px;
+}

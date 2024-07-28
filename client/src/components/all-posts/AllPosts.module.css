@@ -1,0 +1,14 @@
+.allPosts {
+    margin: 100px auto 0 auto;
+    width: 1000px;
+    padding-bottom: 0 20px 50px 20px;
+}
+
+.allPosts h1 {
+    margin-bottom: 40px;
+}
+
+.allWrapper {
+    margin-top: 30px
+}
+
