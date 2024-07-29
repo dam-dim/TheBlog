@@ -1,0 +1,17 @@
+.category {
+    background-color: #2E3944;
+    margin: 10px 10px;
+    width: 20%;
+    padding: 15px;
+    color: #D3D9D4;
+    cursor: pointer;
+    font-size: larger;
+    float: left;
+    border: 1px solid #748D92;
+}
+
+.category:hover {
+    transition: 0.15s ease;
+    background-color: #748D92;
+    color: #2E3944;
+}

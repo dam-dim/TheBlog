@@ -19,9 +19,11 @@ export default function Categories() {
         <div className={styles.categories}>
             <h1>Categories</h1>
 
-            {categories.map((category) => (
-                <Category key={category._id} category={category} />
-            ))}
+            <div className={styles.categoriesWrapper}>
+                {categories.map((category) => (
+                    <Category key={category._id} category={category} />
+                ))}
+            </div>
         </div>
     );
 }
