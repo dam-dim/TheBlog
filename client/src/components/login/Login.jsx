@@ -32,7 +32,13 @@ export default function Login() {
                 password: payload.password,
             });
 
-            setCurrentUser(result.username, result.email, result.accessToken);
+            setCurrentUser(
+                result.username,
+                result.firstName,
+                result.lastName,
+                result.email,
+                result.accessToken
+            );
             navigate("/");
         } catch (error) {
             throw error;
