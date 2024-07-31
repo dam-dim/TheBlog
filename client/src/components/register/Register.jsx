@@ -12,6 +12,8 @@ import Submit from "../form/submit/Submit";
 
 const initialValues = {
     username: "",
+    firstName: "",
+    lastName: "",
     password: "",
     repPass: "",
     email: "",
@@ -31,12 +33,20 @@ export default function Register() {
         try {
             const data = {
                 username: payload.username,
+                firstName: payload.firstName,
+                lastName: payload.lastName,
                 password: payload.password,
                 email: payload.email,
             };
 
             const result = await userService.register(data);
-            setCurrentUser(result.username, result.email, result.accessToken);
+            setCurrentUser(
+                result.username,
+                result.firstName,
+                result.LastName,
+                result.email,
+                result.accessToken
+            );
             navigate("/");
         } catch (error) {
             throw error;
@@ -48,7 +58,7 @@ export default function Register() {
             <h1>Register</h1>
             <form onSubmit={onSubmit}>
                 <Input
-                    placeholder="e.g. ivancho123"
+                    placeholder="damdim3"
                     class={styles.input}
                     type="text"
                     id="username"
@@ -58,6 +68,43 @@ export default function Register() {
                     onBlur={onBlur}
                     error={fieldErrors.username}
                 />
+
+                <Input
+                    placeholder="Damyan"
+                    class={styles.input}
+                    type="text"
+                    id="firstName"
+                    title="First Name"
+                    value={formValues.firstName}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    error={fieldErrors.firstName}
+                />
+
+                <Input
+                    placeholder="Dimov"
+                    class={styles.input}
+                    type="text"
+                    id="lastName"
+                    title="Last Name"
+                    value={formValues.lastName}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    error={fieldErrors.lastName}
+                />
+
+                <Input
+                    placeholder="dam_dim@gmail.com"
+                    class={styles.input}
+                    type="text"
+                    id="email"
+                    title="Email"
+                    value={formValues.email}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    error={fieldErrors.email}
+                />
+
                 <Input
                     class={styles.input}
                     type="password"
@@ -78,17 +125,7 @@ export default function Register() {
                     onBlur={onBlur}
                     error={fieldErrors.repPass}
                 />
-                <Input
-                    placeholder="e.g. ivancho@abv.bg"
-                    class={styles.input}
-                    type="text"
-                    id="email"
-                    title="Email"
-                    value={formValues.email}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    error={fieldErrors.email}
-                />
+
                 <Submit
                     class={styles.submit}
                     buttonText="Register"
