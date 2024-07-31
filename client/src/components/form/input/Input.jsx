@@ -1,5 +1,10 @@
 import Label from "../label/Label";
 
+/**
+ * Input Component with label for controlled form
+ * @param props class, id, title, placeholder, type, value, onChange, onBlur, error
+ * @returns
+ */
 export default function Input(props) {
     return (
         <div className={props.class}>

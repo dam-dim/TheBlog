@@ -1,6 +1,6 @@
 /**
- *
- * @param {*} props
+ * Submit Component for controlled/uncontrolled form
+ * @param props class, error, buttonText
  * @returns
  */
 export default function Submit(props) {

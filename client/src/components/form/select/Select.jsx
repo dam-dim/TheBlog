@@ -1,5 +1,10 @@
 import Label from "../label/Label";
 
+/**
+ * Select Component with label for controlled form with
+ * @param props classs, title, placeholder, type, id, value, onChange, onBlur, values, selected, error
+ * @returns
+ */
 export default function Select(props) {
     return (
         <div className={props.class}>
