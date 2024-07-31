@@ -3,15 +3,6 @@ import * as request from "../lib/request";
 const BASE_URL = "http://localhost:3030/data/comments";
 
 export const create = async (payload) => {
-    /**
-     * comment {
-     *      postId,
-     *      userId,
-     *      content
-     * }
-     *
-     */
-
     try {
         const result = await request.post(BASE_URL, payload);
         return result;
