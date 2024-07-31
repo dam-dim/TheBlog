@@ -5,6 +5,7 @@ import styles from "./Dashboard.module.css";
 import * as userService from "../../services/userService";
 import * as postService from "../../services/postService";
 import TableListItem from "./table-list-item/TableListItem";
+import Profile from "./profile/Profile";
 
 export default function Dashboard() {
     const [myPosts, setMyPosts] = useState([]);
@@ -33,6 +34,7 @@ export default function Dashboard() {
     return (
         <div className={styles.dashboard}>
             <h1>Dashboard</h1>
+            <Profile />
             <div className={styles.myPosts}>
                 <div className={styles.header}>
                     <h2>My Posts</h2>
