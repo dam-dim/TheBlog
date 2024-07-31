@@ -33,6 +33,8 @@ export default function Comments({ post }) {
     const onSubmit = async (e) => {
         e.preventDefault();
 
+        // TODO: error handling if there is no current user
+
         const payload = {
             content: comment,
             postId: post._id,
