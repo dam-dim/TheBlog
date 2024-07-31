@@ -1,10 +1,9 @@
 .comment {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     background-color: #2E3944;
-    margin: 50px 0;
-    padding: 20px;
-    border-radius: 15px;
+    margin: 10px 0;
+    padding: 10px;
     font-size: medium;
 }
 
@@ -16,9 +15,9 @@
     width: 200px;
 }
 
-.commentContent p{
+.commentContent p:nth-child(2){
     margin: 10px 0;
     padding: 20px;
-    border: 1px solid #D3D9D4;
-    border-radius: 10px;
+
+    background-color: #212A31;
 }

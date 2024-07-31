@@ -14,9 +14,12 @@ export default function Comment(props) {
             </div> */}
 
             <div className={styles.commentContent}>
-                <h4>
-                    @{props.username} on {parseDate(props.createdOn)}
-                </h4>
+                <p>
+                    <strong>
+                        {props.firstName} {props.lastName}
+                    </strong>{" "}
+                    on {parseDate(props.createdOn)} said:
+                </p>
                 <p>{props.content}</p>
             </div>
         </div>

@@ -22,9 +22,9 @@ export default function Comments({ post }) {
     }, [postId]);
 
     const isVisible =
-        currentUser?.email === undefined
+        currentUser?.token === undefined
             ? false
-            : currentUser.email !== post.author?.email;
+            : currentUser.token !== post.author?.token;
 
     const onChange = (e) => {
         setComment(e.target.value);
@@ -39,6 +39,8 @@ export default function Comments({ post }) {
             content: comment,
             postId: post._id,
             username: currentUser.username,
+            firstName: currentUser.firstName,
+            lastName: currentUser.lastName,
         };
 
         const newComment = await commentService.create(payload);
@@ -59,6 +61,8 @@ export default function Comments({ post }) {
                             content={comment.content}
                             createdOn={comment._createdOn}
                             username={comment.username}
+                            firstName={comment.firstName}
+                            lastName={comment.lastName}
                         />
                     ))
                 ) : (
