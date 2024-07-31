@@ -1,4 +1,6 @@
 export const errors = {
+    firstName: "",
+    lastName: "",
     username: "",
     email: "",
     password: "",
@@ -18,6 +20,26 @@ const validateUsername = (...props) => {
         return (errors.username = "Username must be at least 3 characters!");
 
     return (errors.username = "");
+};
+
+const validateFirstName = (...props) => {
+    const firstName = props[0].trim();
+    if (firstName.trim() === "")
+        return (errors.firstName = "First Name is required!");
+    if (firstName.trim().length < 3)
+        return (errors.firstName = "First Name must be at least 3 characters!");
+
+    return (errors.firstName = "");
+};
+
+const validateLastName = (...props) => {
+    const lastName = props[0].trim();
+    if (lastName.trim() === "")
+        return (errors.lastName = "Last Name is required!");
+    if (lastName.trim().length < 3)
+        return (errors.lastName = "Last Name must be at least 3 characters!");
+
+    return (errors.lastName = "");
 };
 
 const validatePassword = (...props) => {
@@ -112,6 +134,8 @@ const validateSubmit = (...props) => {
 
 export const validator = {
     username: validateUsername,
+    firstName: validateFirstName,
+    lastName: validateLastName,
     password: validatePassword,
     repPass: validateRepPass,
     email: validateEmail,
@@ -125,6 +149,8 @@ export const validator = {
 export const isValid = {
     submit: () => errors.submit === "",
     username: () => errors.username === "",
+    firstName: () => errors.firstName === "",
+    lastName: () => errors.lastName === "",
     password: () => errors.password === "",
     repPass: () => errors.repPass === "",
     email: () => errors.email === "",
