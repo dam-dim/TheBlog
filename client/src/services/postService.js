@@ -45,6 +45,7 @@ export const getPostsCount = async () => {
     }
 };
 
+// TODO: split into separate functions for filtering and paginating
 export const getPaginatedPosts = async (skip, take, filters) => {
     let query = new URLSearchParams();
 
@@ -60,8 +61,6 @@ export const getPaginatedPosts = async (skip, take, filters) => {
 
     query = query.toString().replaceAll("+", "%20");
 
-    // query = replaceAll(query.toString(), "+", "%20");
-
     try {
         const result = await request.get(`${BASE_URL}?${query}`);
         return result;
@@ -69,14 +68,6 @@ export const getPaginatedPosts = async (skip, take, filters) => {
         throw error;
     }
 };
-
-// function escapeRegExp(string) {
-//     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
-// }
-
-// function replaceAll(str, find, replace) {
-//     return str.replace(new RegExp(escapeRegExp(find), "g"), replace);
-// }
 
 /**
  *
@@ -97,6 +88,7 @@ export const getPostById = async (postId) => {
     }
 };
 
+// TODO: fix spelling
 export const getPostWithoutAuthot = async (postId) => {
     try {
         const result = await request.get(`${BASE_URL}/${postId}`);
@@ -184,6 +176,19 @@ export const getPostsByCategoryId = async (categoryId) => {
 
     try {
         const result = await request.get(`${BASE_URL}?${query}`);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const getPostsCountByAuthorId = async (authorId) => {
+    const query = new URLSearchParams({
+        where: `_ownerId="${authorId}"`,
+    });
+
+    try {
+        const result = await request.get(`${BASE_URL}?${query}&count`);
         return result;
     } catch (error) {
         throw error;
