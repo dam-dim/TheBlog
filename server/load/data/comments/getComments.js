@@ -6,6 +6,8 @@ function getComments() {
             postId: "1e6d9aa9-1e68-494a-a2e3-dfd1aeacba69",
             content: "asdsadsa",
             username: "damdim",
+            firstName: "Damyan",
+            lastName: "Dimov",
         },
         "df6444c7-b4da-40c0-9ce8-c58ef8909d65": {
             _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
@@ -13,6 +15,8 @@ function getComments() {
             postId: "1e6d9aa9-1e68-494a-a2e3-dfd1aeacba69",
             content: "asdsadsa",
             username: "damdim",
+            firstName: "Damyan",
+            lastName: "Dimov",
         },
     };
 
