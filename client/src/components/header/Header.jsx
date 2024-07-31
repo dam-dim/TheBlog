@@ -46,7 +46,8 @@ export default function Header() {
                                     padding: "10px",
                                 }}
                             >
-                                Welcome, {currentUser.username}
+                                Welcome, {currentUser.firstName}{" "}
+                                {currentUser.lastName}
                             </span>
                         </>
                     ) : (
