@@ -10,13 +10,12 @@ import Register from "../register/Register";
 import Dashboard from "../dashboard/Dashboard";
 import Create from "../create/Create";
 import Edit from "../edit/Edit";
-import Fill from "../fill/Fill";
 import Logout from "../logout/Logout";
 import { useContext } from "react";
 import AuthContext from "../../contexts/authContext";
-import Delete from "../delete/Delete";
 import CategoryView from "../category-view/CategoryView";
 import AllPosts from "../all-posts/AllPosts";
+import Admin from "../admin/Admin";
 
 export default function Main() {
     const { currentUser } = useContext(AuthContext);
@@ -35,7 +34,7 @@ export default function Main() {
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/create" element={<Create />} />
                         {currentUser.email === "admin@gmail.com" && (
-                            <Route path="/fill" element={<Fill />} />
+                            <Route path="/admin" element={<Admin />} />
                         )}
 
                         <Route path="/logout" element={<Logout />} />

@@ -32,7 +32,7 @@ export default function Header() {
                             </li>
                             {currentUser.email === "admin@gmail.com" && (
                                 <li>
-                                    <Link to="/fill">Fill</Link>
+                                    <Link to="/admin">Admin Panel</Link>
                                 </li>
                             )}
                             <li>
