@@ -1,4 +1,5 @@
 import * as request from "../lib/request";
+import * as postService from "./postService";
 
 const BASE_URL = "http://localhost:3030/data/categories";
 
@@ -67,6 +68,35 @@ export const getCategoryByName = async (name) => {
         });
 
         const result = await request.get(`${BASE_URL}?${query}`);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const isUnique = async (categoryName) => {
+    try {
+        const result = await getCategoryByName(categoryName);
+
+        return result.length === 0;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const getAllAndSetPostsCount = async () => {
+    try {
+        const result = await request.get(BASE_URL);
+
+        result.forEach(async (category) => {
+            const count = await postService.getPostsCountByCategoryId(
+                category._id
+            );
+            category.postsCount = count;
+        });
+
+        console.log(result);
+
         return result;
     } catch (error) {
         throw error;
