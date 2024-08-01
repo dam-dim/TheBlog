@@ -194,3 +194,16 @@ export const getPostsCountByAuthorId = async (authorId) => {
         throw error;
     }
 };
+
+export const getPostsCountByCategoryId = async (categoryId) => {
+    const query = new URLSearchParams({
+        where: `category="${categoryId}"`,
+    });
+
+    try {
+        const result = await request.get(`${BASE_URL}?${query}&count`);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
