@@ -1,14 +1,28 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import styles from "./Dashboard.module.css";
 import * as userService from "../../services/userService";
 import * as postService from "../../services/postService";
+import AuthContext from "../../contexts/authContext";
+
+import styles from "./Dashboard.module.css";
+
 import TableListItem from "./table-list-item/TableListItem";
 import Profile from "./profile/Profile";
+import Admin from "../admin/Admin";
+import * as categoryService from "../../services/categoryService";
 
 export default function Dashboard() {
     const [myPosts, setMyPosts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const { currentUser } = useContext(AuthContext);
+
+    useEffect(() => {
+        categoryService
+            .getAllAndSetPostsCount()
+            .then(setCategories)
+            .catch((err) => console.log(err));
+    }, []);
 
     useEffect(() => {
         userService
@@ -34,7 +48,11 @@ export default function Dashboard() {
     return (
         <div className={styles.dashboard}>
             <h1>Dashboard</h1>
-            <Profile />
+
+            <Profile categories={categories} />
+
+            {currentUser.email === "admin@gmail.com" && <Admin />}
+
             <div className={styles.myPosts}>
                 <div className={styles.header}>
                     <h2>My Posts</h2>
