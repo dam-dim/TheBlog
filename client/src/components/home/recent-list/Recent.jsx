@@ -4,7 +4,7 @@ import * as postService from "../../../services/postService";
 
 import styles from "./Recent.module.css";
 
-import RecentListItem from "./recent-list-item/RecentListItem";
+import Post from "../../post/Post";
 
 export default function Recent() {
     const [posts, setPosts] = useState([]);
@@ -21,7 +21,7 @@ export default function Recent() {
             <h1 className={styles.title}>Recent posts</h1>
             <div className={styles.content}>
                 {posts.map((post) => (
-                    <RecentListItem {...post} key={post._id} />
+                    <Post {...post} key={post._id} />
                 ))}
             </div>
         </div>

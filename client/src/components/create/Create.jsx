@@ -17,7 +17,6 @@ const initialValues = {
     category: "",
     imageUrl: "",
     content: "",
-    category: "",
     submit: "",
 };
 
