@@ -3,3 +3,31 @@
     padding-bottom: 50px;
     margin: 50px 110px 0 110px;
 }
+
+.addComment {
+    background-color: #2E3944;
+    margin: 10px 0;
+    padding: 20px;
+}
+
+.addComment form {
+    margin: 10px 0;
+    padding: 20px;
+    background-color: #212A31;
+    text-align: center;
+}
+
+.addComment form input {
+    width: 100%;
+    height: 30px;
+}
+
+.addComment form input:nth-child(2) {
+    width: 150px;
+    padding: 5px;
+    margin: 20px auto 0 auto;
+}
+
+.addComment form input:nth-child(2):hover {
+
+}

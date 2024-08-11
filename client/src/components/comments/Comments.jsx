@@ -73,7 +73,6 @@ export default function Comments({ post }) {
                     <div className={styles.addComment}>
                         <h3>Add comment</h3>
                         <form onSubmit={onSubmit}>
-                            <label htmlFor="comment">Comment</label>
                             <input
                                 type="text"
                                 name="comment"
