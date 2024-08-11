@@ -20,31 +20,30 @@ export default function Profile() {
     return (
         <div className={styles.profile}>
             <h2>Profile</h2>
-
             <table>
-                <thead></thead>
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>Posts Count</td>
+                    </tr>
+                </thead>
                 <tbody>
                     <tr>
                         <td>
-                            <p>Email: </p>
+                            {currentUser.firstName} {currentUser.lastName}
                         </td>
 
                         <td>
                             <p>{currentUser.email}</p>
                         </td>
-                    </tr>
 
-                    <tr>
-                        <td>
-                            <p>Number of posts:</p>
-                        </td>
                         <td>
                             <p>{currentUser.postsCount}</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            {console.log(currentUser)}
         </div>
     );
 }
