@@ -95,8 +95,6 @@ export const getAllAndSetPostsCount = async () => {
             category.postsCount = count;
         });
 
-        console.log(result);
-
         return result;
     } catch (error) {
         throw error;
