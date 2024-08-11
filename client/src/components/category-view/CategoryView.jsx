@@ -30,17 +30,17 @@ export default function CategoryView() {
     }, [categoryId]);
 
     return (
-        <div>
+        <div className={styles.category}>
             <h1>{category.name}</h1>
-            {posts.length > 0 ? (
-                posts.map((post) => {
-                    return <RecentListItem {...post} key={post._id} />;
-                    // TODO: ...
-                    // <CategoryViewPost post={post} />
-                })
-            ) : (
-                <h2>No posts in this category yet!</h2>
-            )}
+            <div className={styles.categoryWrapper}>
+                {posts.length > 0 ? (
+                    posts.map((post) => {
+                        return <CategoryViewPost {...post} key={post._id} />;
+                    })
+                ) : (
+                    <h2>No posts in this category yet!</h2>
+                )}
+            </div>
         </div>
     );
 }
