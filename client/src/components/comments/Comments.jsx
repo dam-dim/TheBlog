@@ -2,17 +2,30 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import AuthContext from "../../contexts/authContext";
+import useForm from "../../hooks/useForm";
+
 import * as commentService from "../../services/commentService";
 
 import styles from "./Comments.module.css";
 
 import Comment from "./comment/Comment";
+import Input from "../form/input/Input";
+import Submit from "../form/submit/Submit";
+
+const initialValues = {
+    comment: "",
+    submit: "",
+};
 
 export default function Comments({ post }) {
-    const [comment, setComment] = useState("");
     const [comments, setComments] = useState([]);
     const { postId } = useParams();
     const { currentUser } = useContext(AuthContext);
+
+    const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
+        onSubmitHandler,
+        initialValues
+    );
 
     useEffect(() => {
         commentService
@@ -26,17 +39,11 @@ export default function Comments({ post }) {
             ? false
             : currentUser.email !== post.author?.email;
 
-    const onChange = (e) => {
-        setComment(e.target.value);
-    };
-
-    const onSubmit = async (e) => {
-        e.preventDefault();
-
+    async function onSubmitHandler() {
         // TODO: error handling if there is no current user
 
         const payload = {
-            content: comment,
+            content: formValues.comment,
             postId: post._id,
             username: currentUser.username,
             firstName: currentUser.firstName,
@@ -46,8 +53,7 @@ export default function Comments({ post }) {
         const newComment = await commentService.create(payload);
 
         setComments((prevState) => [...prevState, newComment]);
-        setComment("");
-    };
+    }
 
     return (
         <>
@@ -73,14 +79,21 @@ export default function Comments({ post }) {
                     <div className={styles.addComment}>
                         <h3>Add comment</h3>
                         <form onSubmit={onSubmit}>
-                            <input
-                                type="text"
-                                name="comment"
+                            <Input
+                                class={styles.input}
                                 id="comment"
-                                value={comment}
+                                placeholder="Comment"
+                                type="text"
+                                value={formValues.comment}
                                 onChange={onChange}
+                                onBlur={onBlur}
+                                error={fieldErrors.comment}
                             />
-                            <input type="submit" value="Submit comment" />
+                            <Submit
+                                class={styles.submit}
+                                error={fieldErrors.submit}
+                                buttonText="Submit"
+                            />
                         </form>
                     </div>
                 )}
