@@ -26,6 +26,8 @@
 
 .submit p {
     margin: 30px 0;
+    color: red;
+    font-weight: bold;
 }
 
 .submit input {
@@ -55,4 +57,10 @@
     transition: ease 0.15s;
     color: #212A31;
     background-color: #D3D9D4;
+}
+
+.fetchError {
+    margin: 25px 0 0 0;
+    color: red;
+    font-weight: bold;
 }
