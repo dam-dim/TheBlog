@@ -1,0 +1,64 @@
+.admin {
+    margin: 50px auto 0 auto;
+    text-align: center;
+    width: 80%;
+}
+
+.categories {
+    padding: 20px;
+    margin: 25px 0 0 0;
+    background-color: #124E66;
+    color: #D3D9D4
+}
+
+.categoriesWrapper {
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: wrap row;
+    margin: 15px 0 0 0;
+}
+
+.categoriesWrapper table {
+    background-color: #2E3944;
+    border-collapse: collapse;
+    width: 60%;
+    text-align: center;
+}
+
+.categoriesWrapper table td {
+    padding: 10px;
+}
+
+.category {
+    background-color: #212A31;
+    padding: 20px;
+    margin: 5px 0;
+}
+
+.form {
+    background-color: #2E3944;
+    width: 30%;
+    margin: 15px auto 0 auto;
+    padding: 20px;
+}
+.input input{
+    width: 60%;
+    padding: 10px;
+}
+
+.submit input{
+    margin: 10px 0 0 0;
+    padding: 5px;
+}
+
+.submit p {
+    color: red;
+}
+
+.input p {
+    color: red
+}
+
+.addCategory {
+    margin: 35px 0 0 0;
+}
