@@ -1278,12 +1278,12 @@ const loadUsers = require("./load/users/loadUsers");
                         return result;
                     } else {
                         throw new CredentialError$1(
-                            "Username or password don't match!"
+                            "Email or password don't match!"
                         );
                     }
                 } else {
                     throw new CredentialError$1(
-                        "Username or password don't match!"
+                        "Email or password don't match!"
                     );
                 }
             }
