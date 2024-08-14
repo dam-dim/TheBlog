@@ -37,12 +37,10 @@ export default function Details() {
             <img src={post.imageUrl} alt="" />
             <div className={styles.content}>
                 <div className={styles.creator}>
-                    <img
-                        src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg"
-                        alt=""
-                    />
                     <div className={styles.creatorDetails}>
-                        <p>@{post.author?.username}</p>
+                        <p>
+                            {post.author?.firstName} {post.author?.lastName}
+                        </p>
                         <p>Posted on {parseDate(post._createdOn)}</p>
                         {post._updatedOn && (
                             <p>Updated on {parseDate(post._updatedOn)}</p>
