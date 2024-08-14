@@ -4,7 +4,7 @@ import * as userService from "../../../services/userService";
 
 import styles from "./Profile.module.css";
 
-export default function Profile() {
+export default function Profile(props) {
     const [currentUser, setCurrentUser] = useState({});
 
     // TODO: currentUser can be lifted in the Dashboard Component and there it can be loaded with info
@@ -39,7 +39,7 @@ export default function Profile() {
                         </td>
 
                         <td>
-                            <p>{currentUser.postsCount}</p>
+                            <p>{props.myPosts.length}</p>
                         </td>
                     </tr>
                 </tbody>
