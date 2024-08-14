@@ -36,6 +36,15 @@ export const getAll = async () => {
     }
 };
 
+export const getAllByNameAsc = async () => {
+    try {
+        const result = request.get(`${BASE_URL}?sortBy=name`);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
+
 /**
  * Fetches the category upon given id of category
  * @param categoryId Category id is as '_id' in the database
@@ -88,12 +97,13 @@ export const getAllAndSetPostsCount = async () => {
     try {
         const result = await request.get(BASE_URL);
 
-        result.forEach(async (category) => {
+        for (const category of result) {
             const count = await postService.getPostsCountByCategoryId(
                 category._id
             );
+
             category.postsCount = count;
-        });
+        }
 
         return result;
     } catch (error) {
