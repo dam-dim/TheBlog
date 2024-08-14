@@ -1,6 +1,6 @@
 import Recent from "./recent-list/Recent";
 import styles from "./Home.module.css";
-import Categories from "./categories/Categories";
+import Categories from "../categories/Categories";
 
 export default function Home() {
     return (
@@ -12,7 +12,7 @@ export default function Home() {
                 />
             </div>
             <Recent />
-            <Categories />
+            <Categories componentTitle={"Categories"} categoriesPerLine={5} />
         </div>
     );
 }
