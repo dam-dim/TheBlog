@@ -25,7 +25,9 @@ export default function Post(props) {
                     <h4>{category.name}</h4>
                 </div>
                 <div>
-                    <p>@{props.author?.username}</p>
+                    <p>
+                        {props.author?.firstname} {props.author?.lastName}
+                    </p>
                     <p>{parseDate(props._createdOn)}</p>
                 </div>
             </Link>
