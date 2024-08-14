@@ -7,6 +7,7 @@ import * as categoryService from "../../services/categoryService";
 import styles from "./CategoryView.module.css";
 import CategoryViewPost from "./category-view-post/CategoryViewPost";
 import RecentListItem from "../home/recent-list/recent-list-item/RecentListItem";
+import Categories from "../categories/Categories";
 
 export default function CategoryView() {
     const { categoryId } = useParams();
@@ -30,9 +31,10 @@ export default function CategoryView() {
     }, [categoryId]);
 
     return (
-        <div className={styles.category}>
-            <h1>{category.name}</h1>
-            <div className={styles.categoryWrapper}>
+        <div className={styles.categoryView}>
+            <Categories componentTitle={"Browse through other categories"} />
+            <h1 className={styles.title}>{category.name}</h1>
+            <div className={styles.categoryViewWrapper}>
                 {posts.length > 0 ? (
                     posts.map((post) => {
                         return <CategoryViewPost {...post} key={post._id} />;
