@@ -1,3 +1,5 @@
+import * as categoryService from "../services/categoryService";
+
 export const errors = {
     firstName: "",
     lastName: "",
@@ -91,7 +93,7 @@ const validateTitle = (...props) => {
     return (errors.title = "");
 };
 
-const validateCategory = (...props) => {
+const validateCategory = async (...props) => {
     const category = props[0].trim();
 
     if (category === "") return (errors.category = "Category is required!");
@@ -99,6 +101,9 @@ const validateCategory = (...props) => {
     if (category.length < 5)
         return (errors.category =
             "Category length must be at least 5 characters!");
+
+    if (!(await categoryService.isUnique(category)))
+        return (errors.category = "Category already exists!");
 
     return (errors.category = "");
 };
