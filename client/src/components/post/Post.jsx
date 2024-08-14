@@ -18,7 +18,7 @@ export default function Post(props) {
 
     return (
         <div className={styles.card}>
-            <img src={props?.imageUrl} alt="" />
+            <img src={props?.imageUrl} alt={props.title} />
             <div className={styles.cardDetails}>
                 <h3>{props.title}</h3>
                 <p>{category.name}</p>
