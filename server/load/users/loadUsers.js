@@ -10,8 +10,8 @@ function loadUsers() {
         },
         "847ec027-f659-4086-8032-5173e2f9c93a": {
             email: "admin@gmail.com",
-            firstName: "admin",
-            lastName: "admin",
+            firstName: "Admin",
+            lastName: "Adminov",
             username: "admin",
             hashedPassword:
                 "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
