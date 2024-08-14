@@ -4,16 +4,25 @@
     text-align: center;
     margin: 100px auto 0 auto;
     padding: 20px;
-    width: 40em;
+    width: 80%;
 }
 
 .input {
     background-color: #2E3944;
     margin: 20px auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.image input {
-    width: 100%;
+.input p {
+    margin: 0 0 10px 0;
+    color: red;
+}
+
+.input input {
+    width: 70%;
 }
 
 .image {
@@ -27,16 +36,20 @@
     padding: 10px 30px;
 }
 
+.content p {
+    color: red;
+}
+
 .edit input {
     margin: 15px;
     padding: 10px;
-    width: 80%;
+
 }
 
 .edit textarea {
     height: 500px;
     padding: 10px;
-    width: 91%;
+    width: 90%;
     margin-top: 15px;
 }
 
@@ -49,6 +62,12 @@
     width: 20%;
 }
 
+.submit p {
+    color: red;
+    font-weight: bold;
+    font-size: large;
+}
+
 .submit input:hover {
     transition: ease 0.15s;
     background-color: #D3D9D4;
@@ -56,11 +75,18 @@
 }
 
 .fieldsWrapper {
-    width: 30em;
+    width: 80%;
     margin: auto;
 }
 
 .inputWrapper {
     display: flex;
     justify-content: space-around;
+}
+
+.inputWrapper select {
+    padding: 10px;
+    width: 60%;
+    margin: 15px;
+    
 }
