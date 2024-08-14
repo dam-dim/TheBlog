@@ -20,10 +20,8 @@ export default function Login() {
     const { setCurrentUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
-        loginHandler,
-        initialValues
-    );
+    const { formValues, fieldErrors, fetchError, onChange, onBlur, onSubmit } =
+        useForm(loginHandler, initialValues);
 
     async function loginHandler(payload) {
         try {
@@ -79,9 +77,7 @@ export default function Login() {
                         error={fieldErrors.submit}
                     />
 
-                    <p className={styles.fetchError}>
-                        {fieldErrors.fetchError}
-                    </p>
+                    <p className={styles.fetchError}>{fetchError}</p>
                 </form>
                 <div className={styles.link}>
                     <p>

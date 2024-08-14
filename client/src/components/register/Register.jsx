@@ -24,10 +24,8 @@ export default function Register() {
     const { setCurrentUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
-        registerHandler,
-        initialValues
-    );
+    const { formValues, fieldErrors, fetchError, onChange, onBlur, onSubmit } =
+        useForm(registerHandler, initialValues);
 
     async function registerHandler(payload) {
         try {
@@ -132,7 +130,7 @@ export default function Register() {
                     error={fieldErrors.submit}
                 />
 
-                <p className={styles.fetchError}>{fieldErrors?.fetchError}</p>
+                <p className={styles.fetchError}>{fetchError}</p>
             </form>
             <div className={styles.link}>
                 <p>
