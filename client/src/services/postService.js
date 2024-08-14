@@ -1,5 +1,6 @@
 import * as categories from "../lib/categories";
 import * as request from "../lib/request";
+import * as commentService from "./commentService";
 
 const BASE_URL = "http://localhost:3030/data/posts";
 
