@@ -1,6 +1,6 @@
 .card {
     text-align: left;
-    width: 350px;
+    width: 250px;
     background-color: #124E66;
     color: #D3D9D4;
     box-shadow: 0 4px 8px 0 #212A31, 0 6px 20px 0 #2E3944;
@@ -17,7 +17,7 @@
 }
 
 .cardDetails {
-    padding: 25px 35px;
+    padding: 15px 25px;
 }
 
 .cardDetails a {
@@ -45,7 +45,16 @@
 }
 
 .creator {
-    display: flex;
-    justify-content: space-between;
+    
     margin-top: 15px;
+}
+
+.title {
+    overflow: hidden;
+    text-overflow: fade;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+
 }
