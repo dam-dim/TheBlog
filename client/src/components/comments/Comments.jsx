@@ -24,7 +24,7 @@ export default function Comments({ post }) {
     const isVisible =
         currentUser?.token === undefined
             ? false
-            : currentUser.token !== post.author?.token;
+            : currentUser.email !== post.author?.email;
 
     const onChange = (e) => {
         setComment(e.target.value);
