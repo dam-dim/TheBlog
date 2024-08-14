@@ -11,6 +11,7 @@ export const errors = {
     category: "",
     imageUrl: "",
     content: "",
+    comment: "",
     submit: "",
 };
 
@@ -127,6 +128,18 @@ const validateContent = (...props) => {
     return (errors.content = "");
 };
 
+const validateComment = (...props) => {
+    const comment = props[0].trim();
+
+    if (comment === "") return (errors.comment = "Comment is required!");
+
+    if (comment.length < 4)
+        return (errors.comment =
+            "Comment length must be at least 4 characters!");
+
+    return (errors.comment = "");
+};
+
 const validateSubmit = (...props) => {
     for (const key in errors) {
         if (key === "submit") continue;
@@ -148,6 +161,7 @@ export const validator = {
     category: validateCategory,
     imageUrl: validateImageUrl,
     content: validateContent,
+    comment: validateComment,
     submit: validateSubmit,
 };
 
