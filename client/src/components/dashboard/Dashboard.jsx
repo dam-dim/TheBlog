@@ -18,13 +18,6 @@ export default function Dashboard() {
     const { currentUser } = useContext(AuthContext);
 
     useEffect(() => {
-        categoryService
-            .getAllAndSetPostsCount()
-            .then(setCategories)
-            .catch((err) => console.log(err));
-    }, []);
-
-    useEffect(() => {
         userService
             .me()
             .then((result) => {
@@ -49,9 +42,7 @@ export default function Dashboard() {
         <div className={styles.dashboard}>
             <h1>Dashboard</h1>
 
-            <Profile categories={categories} />
-
-            {currentUser.email === "admin@gmail.com" && <Admin />}
+            <Profile myPosts={myPosts} />
 
             <div className={styles.myPosts}>
                 <div className={styles.header}>
@@ -59,7 +50,6 @@ export default function Dashboard() {
                     <div className={styles.createNew}>
                         <Link to="/create">
                             <p>{`Create new post`}</p>
-                            <img src="images/add.png" alt="add" />
                         </Link>
                     </div>
                 </div>
