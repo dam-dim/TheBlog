@@ -78,6 +78,10 @@ export default function Login() {
                         buttonText="Login"
                         error={fieldErrors.submit}
                     />
+
+                    <p className={styles.fetchError}>
+                        {fieldErrors.fetchError}
+                    </p>
                 </form>
                 <div className={styles.link}>
                     <p>
