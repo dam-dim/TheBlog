@@ -21,11 +21,17 @@ export default function useForm(submitHandler, initialValues) {
         });
     };
 
-    const onBlur = () => validate();
+    const onBlur = async () => {
+        await validate();
+        setFetchError("");
+        setFieldErrors((state) => {
+            return { ...state, fetchError: "" };
+        });
+    };
 
-    const validate = () => {
+    const validate = async () => {
         for (const key in initialValues) {
-            const result = validator[key](
+            const result = await validator[key](
                 formValues[key],
                 formValues?.password
             );
@@ -38,16 +44,18 @@ export default function useForm(submitHandler, initialValues) {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        validate();
+        await validate();
 
         if (errors.submit === "") {
             try {
                 await submitHandler(formValues);
-                setFetchError("");
                 setFormValues(initialValues);
+                setFetchError("");
             } catch (error) {
                 setFetchError(error.message);
-                console.log(error.message);
+                setFieldErrors((state) => {
+                    return { ...state, fetchError: error.message };
+                });
                 setFormValues((state) => {
                     return { ...state, password: "", repPass: "" };
                 });
