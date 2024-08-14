@@ -1,0 +1,30 @@
+.category {
+    background-color: #124E66;
+    margin: 5px 0;
+    width: 250px;
+    padding:  30px 15px;
+    color: #D3D9D4;
+    cursor: pointer;
+    border: 1px solid #748D92;
+}
+
+.category:hover {
+    transition: 0.15s ease;
+    background-color: #748D92;
+    color: #212A31;
+}
+
+.categoryActive {
+    background-color: #2E3944;
+    margin: 10px 10px;
+    width: 15%;
+    padding:  50px 15px;
+    color: #D3D9D4;
+    cursor: pointer;
+}
+
+.categoryActive:hover {
+    transition: 0.15s ease;
+    background-color: #748D92;
+    color: #2E3944;
+}
