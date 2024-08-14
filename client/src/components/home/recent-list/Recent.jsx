@@ -4,14 +4,14 @@ import * as postService from "../../../services/postService";
 
 import styles from "./Recent.module.css";
 
-import Post from "../../post/Post";
+import RecentListItem from "./recent-list-item/RecentListItem";
 
 export default function Recent() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         postService
-            .getLatestPosts(3)
+            .getLatestPosts(4)
             .then(setPosts)
             .catch((err) => console.log(err));
     }, []);
@@ -21,7 +21,7 @@ export default function Recent() {
             <h1 className={styles.title}>Recent posts</h1>
             <div className={styles.content}>
                 {posts.map((post) => (
-                    <Post {...post} key={post._id} />
+                    <RecentListItem {...post} key={post._id} />
                 ))}
             </div>
         </div>
