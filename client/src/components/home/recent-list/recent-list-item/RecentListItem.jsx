@@ -20,11 +20,13 @@ export default function RecentListItem(props) {
         <div className={styles.card}>
             <img src={props?.imageUrl} alt="" />
             <div className={styles.cardDetails}>
-                <h3>{props.title}</h3>
+                <h4 className={styles.title}>{props.title}</h4>
                 <p>{category.name}</p>
 
                 <div className={styles.creator}>
-                    <p>@{props.author?.username}</p>
+                    <p>
+                        {props.author?.firstName} {props.author?.lastName}
+                    </p>
                     <p>{parseDate(props._createdOn)}</p>
                 </div>
                 <Link to={`/posts/${props._id}/details`}>Read more</Link>
