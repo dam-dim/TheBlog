@@ -1,7 +1,14 @@
 .fill {
-    margin: 100px auto;
+    margin: 100px auto 0 auto;
     padding: 50px;
     width: 600px;
-    background-color: aquamarine;
+    background-color: #124E66;
     cursor: pointer;
+    color: #D3D9D4;
+}
+
+.fill:hover {
+    transition: 0.15s ease;
+    background-color: #748D92;
+    color: #212A31;
 }
