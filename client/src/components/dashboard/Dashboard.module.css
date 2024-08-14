@@ -1,6 +1,6 @@
 .dashboard {
     margin: 100px auto 0 auto;
-    width: 50em;
+    width: 80%;
     color: #D3D9D4;
 }
 
@@ -15,7 +15,6 @@
 }
 
 .createNew a {
-    height: 30px;
     background-color: #D3D9D4;
     display: flex;
     justify-content: space-between;
