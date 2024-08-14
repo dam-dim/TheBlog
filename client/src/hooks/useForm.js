@@ -24,9 +24,6 @@ export default function useForm(submitHandler, initialValues) {
     const onBlur = async () => {
         await validate();
         setFetchError("");
-        setFieldErrors((state) => {
-            return { ...state, fetchError: "" };
-        });
     };
 
     const validate = async () => {
@@ -53,9 +50,6 @@ export default function useForm(submitHandler, initialValues) {
                 setFetchError("");
             } catch (error) {
                 setFetchError(error.message);
-                setFieldErrors((state) => {
-                    return { ...state, fetchError: error.message };
-                });
                 setFormValues((state) => {
                     return { ...state, password: "", repPass: "" };
                 });
