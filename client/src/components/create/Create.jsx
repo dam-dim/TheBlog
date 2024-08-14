@@ -52,68 +52,58 @@ export default function Create() {
     }
 
     return (
-        <div className={styles.form}>
+        <div className={styles.create}>
             <h1>Create</h1>
             <form onSubmit={onSubmit}>
-                <div className={styles.header}>
+                <div className={styles.fieldsWrapper}>
+                    <div className={styles.inputWrapper}>
+                        <Input
+                            placeholder="Post Title"
+                            class={styles.input}
+                            type="text"
+                            id="title"
+                            title="Title"
+                            value={formValues.title}
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            error={fieldErrors.title}
+                        />
+
+                        <Select
+                            title="Category"
+                            id="category"
+                            placeholder="Post Category"
+                            class={styles.input}
+                            values={categories}
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            error={fieldErrors.category}
+                        />
+                    </div>
+
                     <Input
-                        placeholder="Post Title"
+                        placeholder="Post the image link here..."
                         class={styles.input}
                         type="text"
-                        id="title"
-                        title="Title"
-                        value={formValues.title}
+                        id="imageUrl"
+                        title="Image URL"
+                        value={formValues.imageUrl}
                         onChange={onChange}
                         onBlur={onBlur}
-                        error={fieldErrors.title}
+                        error={fieldErrors.imageUrl}
                     />
-                    <Input
-                        placeholder="Post Category"
-                        class={styles.input}
-                        type="text"
-                        id="category"
-                        title="Category"
-                        value={formValues.category}
+
+                    <Textarea
+                        placeholder="Post content"
+                        class={styles.content}
+                        id="content"
+                        title="Content"
+                        value={formValues.content}
                         onChange={onChange}
                         onBlur={onBlur}
-                        error={fieldErrors.category}
+                        error={fieldErrors.content}
                     />
                 </div>
-
-                <Select
-                    title="Category"
-                    id="category"
-                    placeholder="Post Category"
-                    class={styles.select}
-                    values={categories}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    error={fieldErrors.category}
-                />
-
-                <Input
-                    placeholder="Post the image link here..."
-                    class={styles.input}
-                    type="text"
-                    id="imageUrl"
-                    title="Image URL"
-                    value={formValues.imageUrl}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    error={fieldErrors.imageUrl}
-                />
-
-                <Textarea
-                    placeholder="Post content"
-                    class={styles.content}
-                    id="content"
-                    title="Content"
-                    value={formValues.content}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    error={fieldErrors.content}
-                />
-
                 <Submit
                     class={styles.submit}
                     buttonText="Create"
