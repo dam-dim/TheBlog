@@ -1,12 +1,14 @@
 .recent {
     margin: 100px auto 0 auto;
+    width: 80%;
 }
 
 .title {
-    margin-bottom: 80px;
+    margin-bottom: 15px;
 }
 
 .content {
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-evenly;
 }
