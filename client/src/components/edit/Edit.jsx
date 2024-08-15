@@ -13,6 +13,7 @@ import Submit from "../form/submit/Submit";
 import Textarea from "../form/textarea/Textarea";
 import parseDate from "../../utils/dateParser";
 import Select from "../form/select/Select";
+import logErrors from "../../utils/logger";
 
 const INIT_VALUES = {
     title: "",
@@ -26,14 +27,6 @@ export default function Edit() {
     const { postId } = useParams();
     const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-        categoryService
-            .getAll()
-            .then(setCategories)
-            .catch((err) => console.log(err));
-    }, []);
-
     const { formValues, fieldErrors, onChange, onBlur, onSubmit, onMount } =
         useForm(onSubmitHandler, {
             ...INIT_VALUES,
@@ -41,13 +34,19 @@ export default function Edit() {
         });
 
     useEffect(() => {
-        postService
-            .getPostWithoutAuthot(postId)
-            .then((result) => {
-                setPost(result);
-                onMount(result);
-            })
-            .catch((err) => console.log(err));
+        const setCategoriesAndPost = async () => {
+            const categories = await categoryService.getAll();
+            setCategories(categories);
+
+            const post = await postService.getPostWithoutAuthor(postId);
+            setPost(post);
+            onMount(post);
+        };
+
+        setCategoriesAndPost().catch((err) => {
+            logErrors(err);
+            navigate("/error");
+        });
     }, [postId]);
 
     async function onSubmitHandler(payload) {
