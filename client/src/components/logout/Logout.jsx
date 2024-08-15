@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import * as userService from "../../services/userService";
 
 import AuthContext from "../../contexts/authContext";
+import logErrors from "../../utils/logger";
 
 export default function Logout() {
     const { removeCurrentUser } = useContext(AuthContext);
@@ -17,8 +18,8 @@ export default function Logout() {
                 navigate("/");
             })
             .catch((err) => {
-                console.log(err);
-                navigate("/");
+                logErrors(err);
+                navigate("/error");
             });
     }, []);
 

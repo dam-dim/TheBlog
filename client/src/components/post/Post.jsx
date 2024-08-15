@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import parseDate from "../../utils/dateParser";
 import * as categoryService from "../../services/categoryService";
 
 import styles from "./Post.module.css";
+import logErrors from "../../utils/logger";
 
 export default function Post(props) {
     const [category, setCategory] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         categoryService
             .getCategoryById(props.category)
             .then((res) => setCategory(res[0]))
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                logErrors(err);
+                navigate("/error");
+            });
     }, []);
 
     return (
