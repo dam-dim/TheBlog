@@ -1,7 +1,7 @@
 function loadUsers() {
     let output = {
         "35c62d76-8152-4626-8712-eeb96381bea8": {
-            email: "peter@gabv.bg",
+            email: "peter@abv.bg",
             firstName: "Peter",
             lastName: "Petrov",
             username: "peter23",
