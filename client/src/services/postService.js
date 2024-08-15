@@ -90,7 +90,7 @@ export const getPostById = async (postId) => {
 };
 
 // TODO: fix spelling
-export const getPostWithoutAuthot = async (postId) => {
+export const getPostWithoutAuthor = async (postId) => {
     try {
         const result = await request.get(`${BASE_URL}/${postId}`);
         return result;
