@@ -120,7 +120,33 @@ The source code is devided into a server side and a client side.
 
 ### Client
 
+    client/
+        public/
+        src/
+            components/
+            contexts/
+            hooks/
+            lib/
+            services/
+            utils/
+
 ### Server
+
+    server/
+        data/
+        load/
+            data/
+                categories/
+                    getCategories.js
+                comments/
+                    getComments.js
+                posts/
+                    getPosts.js
+                loadData.js
+            users/
+                loadUsers.js
+        client.js
+        server.js
 
 The server is initialised with several users, posts, categories and comments so You can start using it immediately.
 
