@@ -1,17 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import parseDate from "../../../utils/dateParser";
-import * as postService from "../../../services/postService";
+import logErrors from "../../../utils/logger";
 
 import styles from "./TableListItem.module.css";
 
 export default function TableListItem(props) {
+    const navigate = useNavigate();
+
     const onClickDelete = async () => {
         try {
-            // alert("Are you sure?");
+            alert("Are you sure?");
             await props.deletePost(props._id);
         } catch (error) {
-            console.log(error);
+            logErrors(error);
+            navigate("/error");
         }
     };
 

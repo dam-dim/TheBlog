@@ -6,6 +6,8 @@ import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
 import useForm from "../../hooks/useForm";
 import parseDate from "../../utils/dateParser";
+import { useNavigate } from "react-router-dom";
+import logErrors from "../../utils/logger";
 
 const initialValues = {
     category: "",
@@ -14,17 +16,21 @@ const initialValues = {
 
 export default function Admin() {
     const [categories, setCategories] = useState([]);
-    const [render, setRender] = useState(0);
+    const [render, seteRender] = useState(0);
     const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
         submitHandler,
         initialValues
     );
+    const navigate = useNavigate();
 
     useEffect(() => {
         categoryService
             .getAllAndSetPostsCount()
             .then(setCategories)
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                logErrors(err);
+                navigate("/error");
+            });
     }, [render]);
 
     async function submitHandler(values) {
@@ -38,7 +44,7 @@ export default function Admin() {
     }
 
     const updateState = () => {
-        setRender((state) => !state);
+        seteRender((state) => !state);
     };
 
     return (

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import AuthContext from "../../contexts/authContext";
 import useForm from "../../hooks/useForm";
@@ -11,6 +11,7 @@ import styles from "./Comments.module.css";
 import Comment from "./comment/Comment";
 import Input from "../form/input/Input";
 import Submit from "../form/submit/Submit";
+import logErrors from "../../utils/logger";
 
 const initialValues = {
     comment: "",
@@ -21,6 +22,7 @@ export default function Comments({ post }) {
     const [comments, setComments] = useState([]);
     const { postId } = useParams();
     const { currentUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(
         onSubmitHandler,
@@ -31,7 +33,10 @@ export default function Comments({ post }) {
         commentService
             .getCommentsByPostId(postId)
             .then(setComments)
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                logErrors(err);
+                navigate("/error");
+            });
     }, [postId]);
 
     const isVisible =

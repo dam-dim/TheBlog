@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import * as userService from "../../../services/userService";
+import logErrors from "../../../utils/logger";
 
 import styles from "./Profile.module.css";
 
 export default function Profile(props) {
     const [currentUser, setCurrentUser] = useState({});
-
-    // TODO: currentUser can be lifted in the Dashboard Component and there it can be loaded with info
-    // TODO: after adding first and last name and gender and profile pic add them here
+    const navigate = useNavigate();
 
     useEffect(() => {
         userService
             .getCurrentUserData()
             .then(setCurrentUser)
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                logErrors(err);
+                navigate("/error");
+            });
     }, []);
 
     return (

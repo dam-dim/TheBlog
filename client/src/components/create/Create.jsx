@@ -11,6 +11,7 @@ import Submit from "../form/submit/Submit";
 import Textarea from "../form/textarea/Textarea";
 import useForm from "../../hooks/useForm";
 import Select from "../form/select/Select";
+import logErrors from "../../utils/logger";
 
 const initialValues = {
     title: "",
@@ -28,7 +29,10 @@ export default function Create() {
         categoryService
             .getAll()
             .then(setCategories)
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                logErrors(err);
+                navigate("/error");
+            });
     }, []);
 
     const { formValues, fieldErrors, onChange, onBlur, onSubmit } = useForm(

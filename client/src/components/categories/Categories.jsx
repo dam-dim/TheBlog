@@ -4,6 +4,8 @@ import * as categoryService from "../../services/categoryService";
 
 import styles from "./Categories.module.css";
 import Category from "./category/Category";
+import logErrors from "../../utils/logger";
+import { useNavigate } from "react-router-dom";
 
 /**
  *
@@ -12,6 +14,7 @@ import Category from "./category/Category";
  */
 export default function Categories(props) {
     const [categories, setCategories] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         categoryService
@@ -19,7 +22,10 @@ export default function Categories(props) {
             .then((result) => {
                 setCategories(result);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                logErrors(err);
+                navigate("/error");
+            });
     }, []);
 
     return (

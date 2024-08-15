@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import * as userService from "../../services/userService";
 import * as postService from "../../services/postService";
@@ -11,9 +11,11 @@ import TableListItem from "./table-list-item/TableListItem";
 import Profile from "./profile/Profile";
 import Admin from "../admin/Admin";
 import * as categoryService from "../../services/categoryService";
+import logErrors from "../../utils/logger";
 
 export default function Dashboard() {
     const [myPosts, setMyPosts] = useState([]);
+    const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
     const { currentUser } = useContext(AuthContext);
 
@@ -24,9 +26,15 @@ export default function Dashboard() {
                 postService
                     .getByAuthorId(result._id)
                     .then(setMyPosts)
-                    .catch((err) => console.log(err.message));
+                    .catch((err) => {
+                        logErrors(err);
+                        navigate("/error");
+                    });
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                logErrors(err);
+                navigate("/error");
+            });
     }, []);
 
     const deletePost = async (postId) => {

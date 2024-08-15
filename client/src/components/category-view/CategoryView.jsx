@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import * as postService from "../../services/postService";
 import * as categoryService from "../../services/categoryService";
@@ -8,11 +8,13 @@ import styles from "./CategoryView.module.css";
 import CategoryViewPost from "./category-view-post/CategoryViewPost";
 import RecentListItem from "../home/recent-list/recent-list-item/RecentListItem";
 import Categories from "../categories/Categories";
+import logErrors from "../../utils/logger";
 
 export default function CategoryView() {
     const { categoryId } = useParams();
     const [posts, setPosts] = useState([]);
     const [category, setCategory] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fn = async () => {
@@ -27,7 +29,10 @@ export default function CategoryView() {
             setPosts(postsByCategory);
         };
 
-        fn().catch((err) => console.log(err));
+        fn().catch((err) => {
+            logErrors(err);
+            navigate("/error");
+        });
     }, [categoryId]);
 
     return (

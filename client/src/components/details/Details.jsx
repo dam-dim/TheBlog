@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import * as categoryService from "../../services/categoryService";
 import * as postService from "../../services/postService";
 
 import parseDate from "../../utils/dateParser";
+import logErrors from "../../utils/logger";
 
 import styles from "./Details.module.css";
 
@@ -15,6 +16,7 @@ export default function Details() {
     const [post, setPost] = useState({});
     const { postId } = useParams();
     const [category, setCategory] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         const setCategoryAsync = async (postObj) => {
@@ -29,7 +31,10 @@ export default function Details() {
             .getPostById(postId)
             .then(setCategoryAsync)
             .then(setPost)
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                logErrors(err);
+                navigate("/error");
+            });
     }, [postId]);
 
     return (

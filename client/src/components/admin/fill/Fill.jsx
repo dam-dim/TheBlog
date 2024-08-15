@@ -1,14 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import * as postService from "../../../services/postService";
 import styles from "./Fill.module.css";
+import logErrors from "../../../utils/logger";
 
 export default function Fill(props) {
+    const navigate = useNavigate();
+
     const onClickHandler = async () => {
         try {
             alert("Are you sure?");
             await postService.fill();
             props.updateState();
         } catch (error) {
-            console.log(error);
+            logErrors(error);
+            navigate("/error");
         }
     };
 
