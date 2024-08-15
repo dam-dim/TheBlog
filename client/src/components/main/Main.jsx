@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import styles from "./Main.module.css";
@@ -11,11 +12,11 @@ import Dashboard from "../dashboard/Dashboard";
 import Create from "../create/Create";
 import Edit from "../edit/Edit";
 import Logout from "../logout/Logout";
-import { useContext } from "react";
 import AuthContext from "../../contexts/authContext";
 import CategoryView from "../category-view/CategoryView";
 import AllPosts from "../all-posts/AllPosts";
 import Admin from "../admin/Admin";
+import MyError from "../myError/MyError";
 
 export default function Main() {
     const { currentUser } = useContext(AuthContext);
@@ -29,6 +30,7 @@ export default function Main() {
                     element={<CategoryView />}
                 />
                 <Route path="/all-posts" element={<AllPosts />} />
+                <Route path="/error" element={<MyError />} />
                 {currentUser.token ? (
                     <>
                         <Route path="/dashboard" element={<Dashboard />} />
@@ -39,10 +41,6 @@ export default function Main() {
 
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/posts/:postId/edit" element={<Edit />} />
-                        {/* <Route
-                            path="/posts/:postId/delete"
-                            element={<Delete />}
-                        /> */}
                     </>
                 ) : (
                     <>
